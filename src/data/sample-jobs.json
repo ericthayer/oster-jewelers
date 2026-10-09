@@ -1,0 +1,29 @@
+{
+  "_note": "SAMPLE DATA for concept review only. Shape follows the Paylocity Recruiting job feed, the default JobPosting shape (Title, JobLocation, HiringDepartment, PublishedDate, ApplyUrl). Replace with the client's live feed; these are not real openings.",
+  "jobs": [
+    {
+      "JobId": "sample-1",
+      "Title": "Field Technician (sample)",
+      "HiringDepartment": "Field Operations",
+      "PublishedDate": "2026-09-12T00:00:00Z",
+      "JobLocation": { "City": "City", "State": "ST" },
+      "ApplyUrl": "https://example.com/careers/"
+    },
+    {
+      "JobId": "sample-2",
+      "Title": "Equipment Operator (sample)",
+      "HiringDepartment": "Operations",
+      "PublishedDate": "2026-09-05T00:00:00Z",
+      "JobLocation": { "City": "City", "State": "ST" },
+      "ApplyUrl": "https://example.com/careers/"
+    },
+    {
+      "JobId": "sample-3",
+      "Title": "Team Lead (sample)",
+      "HiringDepartment": "Operations",
+      "PublishedDate": "2026-08-28T00:00:00Z",
+      "JobLocation": { "City": "City", "State": "ST" },
+      "ApplyUrl": "https://example.com/careers/"
+    }
+  ]
+}

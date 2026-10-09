@@ -1,0 +1,86 @@
+<form class="tpl-form" action="#" method="post" enctype="multipart/form-data" data-tpl-form data-tpl-demo aria-label="Subcontractor inquiry">
+  <div class="tpl-notice tpl-notice--danger" data-tpl-error-summary tabindex="-1" hidden>
+    <svg class="tpl-icon" data-tpl-icon="alert-triangle"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">Check the highlighted fields</p>
+      <ul data-tpl-error-list></ul>
+    </div>
+  </div>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-company">Company name</label>
+      <input class="tpl-input" id="{{p|s}}-company" name="company" autocomplete="organization" required>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-contact">Contact name</label>
+      <input class="tpl-input" id="{{p|s}}-contact" name="contact" autocomplete="name" required>
+    </div>
+  </div>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-email">Email</label>
+      <input class="tpl-input" id="{{p|s}}-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-phone">Phone</label>
+      <input class="tpl-input" id="{{p|s}}-phone" name="phone" type="tel" autocomplete="tel" pattern="[\d\s\(\)\+\.\-]{10,}" required>
+    </div>
+  </div>
+  <fieldset class="tpl-fieldset" data-tpl-required data-tpl-error="Choose at least one trade">
+    <legend class="tpl-fieldset__legend">Trades you perform</legend>
+    <div class="tpl-choices tpl-choices--2">
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-1" name="trades" value="Service one">Service one</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-2" name="trades" value="Service two">Service two</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-3" name="trades" value="Service three">Service three</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-4" name="trades" value="Service four">Service four</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-5" name="trades" value="Service five">Service five</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|s}}-trade-6" name="trades" value="Other">Other</label>
+    </div>
+  </fieldset>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-team">Team size</label>
+      <div class="tpl-select-wrap">
+        <select class="tpl-select" id="{{p|s}}-team" name="team_size" required>
+          <option value="">Choose a range</option>
+          <option>1 to 5 people</option>
+          <option>6 to 15 people</option>
+          <option>16 to 30 people</option>
+          <option>More than 30 people</option>
+        </select>
+        <svg class="tpl-icon" data-tpl-icon="chevron-down"></svg>
+      </div>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-area">Service area</label>
+      <p class="tpl-field__hint" id="{{p|s}}-area-hint">States and metro areas you cover</p>
+      <input class="tpl-input" id="{{p|s}}-area" name="service_area" aria-describedby="{{p|s}}-area-hint" required>
+    </div>
+  </div>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-coi">Certificate of insurance <span class="tpl-field__opt">(optional)</span></label>
+      <p class="tpl-field__hint" id="{{p|s}}-coi-hint" data-tpl-file-names="PDF or image, 10 MB max">PDF or image, 10 MB max</p>
+      <input class="tpl-file" id="{{p|s}}-coi" name="coi" type="file" accept=".pdf,image/*" aria-describedby="{{p|s}}-coi-hint">
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|s}}-emr">EMR <span class="tpl-field__opt">(optional)</span></label>
+      <p class="tpl-field__hint" id="{{p|s}}-emr-hint">Your current experience modification rate</p>
+      <input class="tpl-input" id="{{p|s}}-emr" name="emr" inputmode="decimal" aria-describedby="{{p|s}}-emr-hint">
+    </div>
+  </div>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="{{p|s}}-message">Anything else <span class="tpl-field__opt">(optional)</span></label>
+    <textarea class="tpl-textarea" id="{{p|s}}-message" name="message"></textarea>
+  </div>
+  <div class="tpl-form__foot">
+    <button class="tpl-btn tpl-btn--primary tpl-btn--lg" type="submit">Start an inquiry<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-right"></svg></button>
+  </div>
+</form>
+<div class="tpl-notice tpl-notice--success" data-tpl-success tabindex="-1" hidden>
+  <svg class="tpl-icon" data-tpl-icon="circle-check"></svg>
+  <div class="tpl-notice__body">
+    <p class="tpl-notice__title">Thanks, we have your details</p>
+    <p>Our operations team reviews every inquiry and will reach out when there is a fit.</p>
+  </div>
+</div>

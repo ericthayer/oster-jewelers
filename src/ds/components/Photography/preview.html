@@ -1,0 +1,32 @@
+<!-- @dsCard group="Brand" height=720 subtitle="Six placeholder photos; the grade follows the theme; slots are the shot list" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Photography</title>
+<style>
+  .pv { display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-6); }
+  .pv__grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .pv__grid figure { margin: 0; }
+  .pv__grid .tpl-caption code { font-size: 0.9em; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="pv__grid">
+    <figure><div class="tpl-media" style="--focus: 50% 32%"><img src="{{asset:Photography/photo-hero.svg}}" alt="Client photo placeholder: hero"></div><figcaption class="tpl-caption"><code>photo-hero</code>: Cinematic hero. Dark foreground carries the headline.</figcaption></figure>
+    <figure><div class="tpl-media" style="--focus: 55% 40%"><img src="{{asset:Photography/photo-people.svg}}" alt="Client photo placeholder: people at work"></div><figcaption class="tpl-caption"><code>photo-people</code>: safety and people stories.</figcaption></figure>
+    <figure><div class="tpl-media" style="--focus: 50% 80%"><img src="{{asset:Photography/photo-wide.svg}}" alt="Client photo placeholder: scale"></div><figcaption class="tpl-caption"><code>photo-wide</code>: Engineered hero, proof of scale.</figcaption></figure>
+    <figure><div class="tpl-media"><img src="{{asset:Photography/photo-detail.svg}}" alt="Client photo placeholder: detail"></div><figcaption class="tpl-caption"><code>photo-detail</code>: service detail.</figcaption></figure>
+    <figure><div class="tpl-media"><img src="{{asset:Photography/photo-craft.svg}}" alt="Client photo placeholder: craft"></div><figcaption class="tpl-caption"><code>photo-craft</code>: detail and craft.</figcaption></figure>
+    <figure><div class="tpl-media" style="--focus: 60% 45%"><img src="{{asset:Photography/photo-site.svg}}" alt="Client photo placeholder: on site"></div><figcaption class="tpl-caption"><code>photo-site</code>: on site, materials and equipment.</figcaption></figure>
+  </div>
+  <div class="pv__grid">
+    <div class="tpl-slot"><svg class="tpl-icon" data-tpl-icon="camera"></svg><p class="tpl-slot__label">Photo needed</p><p class="tpl-slot__brief">Service three in action, people in frame, 3:2 landscape</p></div>
+    <div class="tpl-slot"><svg class="tpl-icon" data-tpl-icon="camera"></svg><p class="tpl-slot__label">Photo needed</p><p class="tpl-slot__brief">Service two equipment on site, operator visible, 3:2 landscape</p></div>
+    <div class="tpl-slot"><svg class="tpl-icon" data-tpl-icon="camera"></svg><p class="tpl-slot__label">Photo needed</p><p class="tpl-slot__brief">A finished job beside the starting condition</p></div>
+    <div class="tpl-slot"><svg class="tpl-icon" data-tpl-icon="camera"></svg><p class="tpl-slot__label">Photo needed</p><p class="tpl-slot__brief">Leadership portraits, natural light, 4:5 vertical</p></div>
+  </div>
+</div>
+</body>
+</html>

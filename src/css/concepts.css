@@ -1,0 +1,248 @@
+/* Concept expression layer.
+   Colors come from tokens.json themes; this file carries everything else a
+   concept changes: type treatment, corners, rules, rhythm, media grade, motion
+   and the logo variant. A new concept = one theme in tokens.json + one block here.
+   Keyed on data-theme so the DS theme switcher, the brand boards and the pages
+   all use the same switch. */
+
+/* Cinematic: dark, cinematic. Accent is the light source. All-sharp corners,
+   with an optional brand-derived notch cut from primary actions. */
+:root,
+[data-theme="cinematic"] {
+  color-scheme: dark;
+  --display-weight: 800;
+  --display-transform: uppercase;
+  --display-tracking: -0.01em;
+  --display-leading: 0.92;
+  --display-cap: 9.4vw;
+  --heading-weight: 750;
+  --heading-transform: none;
+  --heading-tracking: -0.01em;
+  --label-family: var(--font-sans);
+  --label-weight: 700;
+  --label-transform: uppercase;
+  --label-tracking: 0.08em;
+  --nav-weight: 600;
+  --nav-transform: uppercase;
+  --nav-tracking: 0.08em;
+  --nav-size: 0.8125rem;
+  --eyebrow-color: var(--accent-text);
+  --eyebrow-size: 0.75rem;
+  --h2-transform: uppercase;
+  --h2-weight: 800;
+  --radius-control: var(--radius-none);
+  --radius-field: var(--radius-none);
+  --radius-card: var(--radius-none);
+  --radius-media: var(--radius-none);
+  --radius-tag: var(--radius-none);
+  --notch: 14px;
+  --rule: 1px solid var(--border);
+  --rule-strong: 1px solid var(--border-strong);
+  --card-bg: var(--surface-raised);
+  --card-border: 1px solid var(--border);
+  --card-shadow: var(--shadow-raised);
+  --section-space: clamp(var(--space-16), 9vw, var(--space-24));
+  --btn-height: 52px;
+  --btn-pad: 28px;
+  --btn-weight: 700;
+  --btn-transform: uppercase;
+  --btn-tracking: 0.07em;
+  --btn-size: 0.8125rem;
+  --media-filter: saturate(0.9) contrast(1.08) brightness(0.9);
+  --media-filter-hover: saturate(1) contrast(1.06) brightness(1);
+  --motion-duration: 560ms;
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-distance: 28px;
+  --logo-on-light: none;
+  --logo-on-dark: block;
+  --quote-mark-color: var(--accent);
+}
+
+/* Engineered: light, engineered. Accent is redline markup. 2px corners, rules
+   that organize real data, Michroma labels, restrained motion. */
+[data-theme="engineered"] {
+  color-scheme: light;
+  --display-weight: 650;
+  --display-transform: none;
+  --display-tracking: -0.03em;
+  --display-leading: 1;
+  --heading-weight: 650;
+  --heading-transform: none;
+  --heading-tracking: -0.02em;
+  --label-family: var(--font-wide);
+  --label-weight: 400;
+  --label-transform: uppercase;
+  --label-tracking: 0.06em;
+  --nav-weight: 600;
+  --nav-transform: none;
+  --nav-tracking: 0;
+  --nav-size: 0.9375rem;
+  --eyebrow-color: var(--text-muted);
+  --eyebrow-size: 0.75rem;
+  --h2-transform: none;
+  --h2-weight: 650;
+  --radius-control: var(--radius-xs);
+  --radius-field: var(--radius-xs);
+  --radius-card: var(--radius-xs);
+  --radius-media: var(--radius-xs);
+  --radius-tag: var(--radius-xs);
+  --notch: 0px;
+  --rule: 1px solid var(--border);
+  --rule-strong: 1px solid var(--border-strong);
+  --card-bg: var(--surface-raised);
+  --card-border: 1px solid var(--border-strong);
+  --card-shadow: var(--shadow-raised);
+  --section-space: clamp(var(--space-16), 7vw, var(--space-20));
+  --btn-height: 48px;
+  --btn-pad: 24px;
+  --btn-weight: 600;
+  --btn-transform: none;
+  --btn-tracking: 0;
+  --btn-size: 0.9375rem;
+  --media-filter: saturate(0.82) contrast(1.03);
+  --media-filter-hover: saturate(0.95) contrast(1.03);
+  --motion-duration: 280ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+  --reveal-distance: 12px;
+  --logo-on-light: block;
+  --logo-on-dark: none;
+  --quote-mark-color: var(--accent-text);
+}
+
+/* Editorial: light, people-first. One bold accent field per page, 16px media and
+   cards, pill buttons and tags, 8px fields, the most open rhythm. */
+[data-theme="editorial"] {
+  color-scheme: light;
+  --display-weight: 700;
+  --display-transform: none;
+  --display-tracking: -0.035em;
+  --display-leading: 0.98;
+  --heading-weight: 700;
+  --heading-transform: none;
+  --heading-tracking: -0.02em;
+  --label-family: var(--font-sans);
+  --label-weight: 600;
+  --label-transform: none;
+  --label-tracking: 0;
+  --nav-weight: 600;
+  --nav-transform: none;
+  --nav-tracking: 0;
+  --nav-size: 0.9375rem;
+  --eyebrow-color: var(--accent-text);
+  --eyebrow-size: 0.9375rem;
+  --h2-transform: none;
+  --h2-weight: 700;
+  --radius-control: var(--radius-pill);
+  --radius-field: var(--radius-md);
+  --radius-card: var(--radius-lg);
+  --radius-media: var(--radius-lg);
+  --radius-tag: var(--radius-pill);
+  --notch: 0px;
+  --rule: 1px solid var(--border);
+  --rule-strong: 1px solid var(--border-strong);
+  --card-bg: var(--surface-raised);
+  --card-border: 1px solid transparent;
+  --card-shadow: var(--shadow-raised);
+  --section-space: clamp(var(--space-16), 10vw, var(--space-32));
+  --btn-height: 52px;
+  --btn-pad: 28px;
+  --btn-weight: 700;
+  --btn-transform: none;
+  --btn-tracking: 0;
+  --btn-size: 0.9375rem;
+  --media-filter: saturate(1.04) contrast(1.02);
+  --media-filter-hover: saturate(1.08) contrast(1.02);
+  --motion-duration: 440ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 20px;
+  --logo-on-light: block;
+  --logo-on-dark: none;
+  --quote-mark-color: var(--accent-text);
+}
+
+/* Kinetic: dark glass, light in motion. Deepest black, glass
+   panels with an 8px shell around a 24px core, accent as light (glow, pulses,
+   the pill action), Montserrat 500 display, Michroma instrument labels, and
+   motion as the main expression: a WebGL strand scene, word-mask reveals,
+   magnetic pills, a card stack and a horizontal values rail. */
+[data-theme="kinetic"] {
+  color-scheme: dark;
+  --display-weight: 500;
+  --display-transform: none;
+  --display-tracking: -0.04em;
+  --display-leading: 1;
+  --heading-weight: 500;
+  --heading-transform: none;
+  --heading-tracking: -0.03em;
+  --label-family: var(--font-wide);
+  --label-weight: 400;
+  --label-transform: uppercase;
+  --label-tracking: 0.14em;
+  --nav-weight: 500;
+  --nav-transform: none;
+  --nav-tracking: 0;
+  --nav-size: 0.8125rem;
+  --eyebrow-color: var(--text-muted);
+  --eyebrow-size: 0.6875rem;
+  --eyebrow-display: inline-flex;
+  --eyebrow-width: max-content;
+  --eyebrow-pad: 6px 12px;
+  --eyebrow-border: 1px solid var(--glass-line);
+  --eyebrow-radius: var(--radius-pill);
+  --h2-transform: none;
+  --h2-weight: 500;
+  --radius-control: var(--radius-pill);
+  --radius-field: var(--radius-lg);
+  --radius-card: var(--radius-2xl);
+  --radius-media: var(--radius-xl);
+  --radius-tag: var(--radius-pill);
+  --notch: 0px;
+  --glass-line: rgba(254, 253, 251, 0.1);
+  --glass-line-strong: rgba(254, 253, 251, 0.18);
+  --glass-fill: rgba(254, 253, 251, 0.04);
+  --glass-core: rgba(254, 253, 251, 0.03);
+  --rule: 1px solid var(--glass-line);
+  --rule-strong: 1px solid var(--glass-line-strong);
+  --card-bg: var(--glass-fill);
+  --card-border: 1px solid var(--glass-line);
+  --card-shadow: var(--shadow-raised);
+  --shell: "";
+  --shell-inset: 8px;
+  --shell-core: var(--glass-core);
+  --shell-highlight: inset 0 1px 0 rgba(254, 253, 251, 0.06), inset 0 0 0 1px rgba(254, 253, 251, 0.03);
+  --shell-glow: "";
+  --plate-gap: var(--space-2);
+  --plate-bg: transparent;
+  --plate-border: 0;
+  --plate-cell-bg: var(--glass-fill);
+  --plate-cell-radius: var(--radius-xl);
+  --cta-bg: radial-gradient(70% 140% at 88% 50%, rgba(232, 119, 34, 0.26), transparent 70%), var(--glass-fill);
+  --section-space: clamp(var(--space-16), 12vw, var(--space-32));
+  --btn-height: 56px;
+  --btn-pad: 26px;
+  --btn-weight: 500;
+  --btn-transform: none;
+  --btn-tracking: 0;
+  --btn-size: 0.9375rem;
+  --icon-stroke: 1.25;
+  --media-filter: saturate(0.78) contrast(1.12) brightness(0.86);
+  --media-filter-hover: saturate(0.9) contrast(1.08) brightness(0.95);
+  --motion-duration: 700ms;
+  --motion-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --reveal-distance: 56px;
+  --reveal-anim: tpl-reveal-soft;
+  --body-bg: transparent;
+  --page-veil: "";
+  --page-veil-bg:
+    radial-gradient(60% 50% at 78% 8%, rgba(232, 119, 34, 0.18), transparent 70%),
+    radial-gradient(40% 40% at 8% 70%, rgba(232, 119, 34, 0.08), transparent 70%),
+    radial-gradient(50% 40% at 60% 100%, rgba(254, 253, 251, 0.04), transparent 70%);
+  --page-grain: "";
+  --logo-on-light: none;
+  --logo-on-dark: block;
+  --quote-mark-color: var(--accent);
+  --quote-weight: 400;
+  --quote-mark-weight: 300;
+  --feature-pad: var(--shell-inset);
+  --feature-media-radius: var(--radius-xl);
+}

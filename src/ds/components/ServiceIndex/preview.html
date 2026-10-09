@@ -1,0 +1,27 @@
+<!-- @dsCard group="Sections" height=760 width=1280 subtitle="One markup, four layouts: index, spec plates, photo cards, bento (tiles open a sheet)" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ServiceIndex</title>
+<style>.pv { padding-block: var(--space-10); }</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-container" data-for-theme="cinematic">
+    <!-- @include sections/services.html variant="index" base="#" id-prefix="wl-" -->
+  </div>
+  <div class="tpl-container" data-for-theme="engineered" hidden>
+    <!-- @include sections/services.html variant="plates" base="#" id-prefix="ab-" -->
+  </div>
+  <div class="tpl-container" data-for-theme="editorial" hidden>
+    <!-- @include sections/services.html variant="cards" base="#" id-prefix="cr-" -->
+  </div>
+  <div class="tpl-container" data-for-theme="kinetic" data-tpl-glow data-tpl-sheet-host="pv-sheet" hidden>
+    <!-- @include sections/services.html variant="bento" base="#" id-prefix="lf-" -->
+    <!-- @include sections/service-sheet.html id="pv-sheet" base="#" -->
+  </div>
+</div>
+<!-- @include ds/theme-follow.html -->
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- @dsCard group="Forms" height=720 subtitle="Label above, hint, control, error below; every state" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Field</title>
+<style>
+  .pv { display: grid; gap: var(--space-6) var(--space-8); padding: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: start; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="f-name">Name</label>
+    <input class="tpl-input" id="f-name" autocomplete="name" value="Jordan Alvarez">
+  </div>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="f-company">Company <span class="tpl-field__opt">(optional)</span></label>
+    <input class="tpl-input" id="f-company" placeholder="Company name">
+  </div>
+  <div class="tpl-field is-invalid">
+    <label class="tpl-field__label" for="f-email">Email</label>
+    <input class="tpl-input" id="f-email" type="email" value="jordan@" aria-invalid="true" aria-describedby="f-email-error">
+    <p class="tpl-field__error" id="f-email-error"><svg class="tpl-icon" data-tpl-icon="alert-circle"></svg><span><span class="tpl-visually-hidden">Error: </span>Enter an email address like name@company.com</span></p>
+  </div>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="f-timeline">Timeline</label>
+    <p class="tpl-field__hint" id="f-timeline-hint">When the work needs to start</p>
+    <div class="tpl-select-wrap">
+      <select class="tpl-select" id="f-timeline" aria-describedby="f-timeline-hint"><option>Within 3 months</option><option>3 to 6 months</option></select>
+      <svg class="tpl-icon" data-tpl-icon="chevron-down"></svg>
+    </div>
+  </div>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="f-details">Project details</label>
+    <textarea class="tpl-textarea" id="f-details">The size and site conditions of the job, in a sentence.</textarea>
+  </div>
+  <fieldset class="tpl-fieldset">
+    <legend class="tpl-fieldset__legend">Services needed</legend>
+    <div class="tpl-choices">
+      <label class="tpl-choice"><input type="checkbox" checked>Service two</label>
+      <label class="tpl-choice"><input type="checkbox">Service five</label>
+    </div>
+  </fieldset>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="f-coi">Certificate of insurance <span class="tpl-field__opt">(optional)</span></label>
+    <p class="tpl-field__hint" id="f-coi-hint">PDF or image, 10 MB max</p>
+    <input class="tpl-file" id="f-coi" type="file" aria-describedby="f-coi-hint">
+  </div>
+  <fieldset class="tpl-fieldset">
+    <legend class="tpl-fieldset__legend">Preferred contact</legend>
+    <div class="tpl-choices">
+      <label class="tpl-choice"><input type="radio" name="pv-contact" checked>Phone</label>
+      <label class="tpl-choice"><input type="radio" name="pv-contact">Email</label>
+    </div>
+  </fieldset>
+</div>
+</body>
+</html>

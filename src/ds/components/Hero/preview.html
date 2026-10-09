@@ -1,0 +1,81 @@
+<!-- @dsCard group="Sections" height=640 width=1280 subtitle="Variant follows the theme: cinematic, split, editorial, scene" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hero</title>
+<style>
+  .pv .tpl-hero--cinematic { min-height: 600px; }
+  .pv .tpl-hero--cinematic .tpl-hero__inner { padding-top: var(--space-16); }
+  .pv .tpl-hero--split, .pv .tpl-hero--editorial { padding-block: var(--space-12); }
+  .pv .tpl-hero--scene { min-height: 640px; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <section class="tpl-hero tpl-hero--cinematic" data-for-theme="cinematic" aria-label="Cinematic hero">
+    <div class="tpl-hero__media" style="--focus: 50% 32%"><img src="{{asset:Photography/photo-hero.svg}}" alt="Client photo placeholder: hero"></div>
+    <div class="tpl-container tpl-hero__inner">
+      <div class="tpl-hero__content">
+        <h1 class="tpl-display">Your headline. Two lines.</h1>
+        <p class="tpl-lead">One plain line on the work, the place and the outcome, in twenty words or fewer.</p>
+        <div class="tpl-hero__actions">
+          <a class="tpl-btn tpl-btn--primary tpl-btn--lg" href="#quote">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-right"></svg></a>
+          <a class="tpl-btn tpl-btn--on-photo tpl-btn--lg" href="tel:+15550100100"><svg class="tpl-icon" data-tpl-icon="phone"></svg>(555) 010-0100</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tpl-hero tpl-hero--split" data-for-theme="engineered" aria-label="Split hero" hidden>
+    <div class="tpl-container tpl-hero__grid">
+      <div class="tpl-hero__content">
+        <span class="tpl-eyebrow">Category line</span>
+        <h1 class="tpl-display tpl-display--lg">A precise headline in one line.</h1>
+        <p class="tpl-lead tpl-muted">One plain line on the services and the customers they serve.</p>
+        <div class="tpl-hero__actions">
+          <a class="tpl-btn tpl-btn--primary tpl-btn--lg" href="#quote">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-right"></svg></a>
+          <a class="tpl-btn tpl-btn--secondary tpl-btn--lg" href="#services">Our services</a>
+        </div>
+      </div>
+      <div class="tpl-hero__aside">
+        <figure class="tpl-media" style="--focus: 50% 80%"><img src="{{asset:Photography/photo-wide.svg}}" alt="Client photo placeholder: scale"></figure>
+        <dl class="tpl-plate">
+          <div class="tpl-plate__cell"><dt class="tpl-plate__label">Service lines</dt><dd class="tpl-plate__value">5</dd></div>
+          <div class="tpl-plate__cell"><dt class="tpl-plate__label">Part of</dt><dd class="tpl-plate__value">Parent company</dd></div>
+          <div class="tpl-plate__cell"><dt class="tpl-plate__label">Offices</dt><dd class="tpl-plate__value">City, ST<br>City, ST</dd></div>
+          <div class="tpl-plate__cell"><dt class="tpl-plate__label">Call</dt><dd class="tpl-plate__value"><a href="tel:+15550100100">(555) 010-0100</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="tpl-hero tpl-hero--editorial" data-for-theme="editorial" aria-label="Editorial hero" hidden>
+    <div class="tpl-container">
+      <h1 class="tpl-display">A people-first headline.</h1>
+      <div class="tpl-hero__grid">
+        <div class="tpl-hero__content">
+          <p class="tpl-lead">One line on the people and the purpose behind the work.</p>
+          <div class="tpl-hero__actions">
+            <a class="tpl-btn tpl-btn--primary tpl-btn--lg" href="#quote">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-right"></svg></a>
+            <a class="tpl-btn tpl-btn--secondary tpl-btn--lg" href="#careers">View open roles</a>
+          </div>
+        </div>
+        <div class="tpl-hero__photos">
+          <figure class="tpl-media tpl-media--portrait" style="--focus: 60% 30%"><img src="{{asset:Photography/photo-people.svg}}" alt="Client photo placeholder: people at work"></figure>
+          <figure class="tpl-media" style="--focus: 40% 55%"><img src="{{asset:Photography/photo-craft.svg}}" alt="Client photo placeholder: craft"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div data-for-theme="kinetic" hidden>
+    <!-- @include sections/hero-scene.html base="#" services="#services" -->
+  </div>
+</div>
+<!-- @include ds/theme-follow.html -->
+<script type="module">
+  import * as THREE from '{{vendor:three}}';
+  if (window.SiteDS) window.SiteDS.scene.mountAll(THREE);
+</script>
+</body>
+</html>

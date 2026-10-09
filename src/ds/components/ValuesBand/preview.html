@@ -1,0 +1,47 @@
+<!-- @dsCard group="Sections" height=560 width=1280 subtitle="Values: marquee, grid plate, accent field or rail, following the theme" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ValuesBand</title>
+</head>
+<body>
+<div class="pv">
+<section class="tpl-section tpl-values tpl-values--marquee" data-for-theme="cinematic" aria-label="Values, marquee">
+  <div class="tpl-container">
+    <div class="tpl-section-head">
+      <h2 class="tpl-h2">The client&rsquo;s mantra, in their own words.</h2>
+      <p class="tpl-lead tpl-muted">The mantra and the six values.</p>
+    </div>
+  </div>
+  <!-- @include sections/values-marquee.html -->
+</section>
+<section class="tpl-section tpl-values tpl-values--grid" data-for-theme="engineered" aria-label="Values, grid" hidden>
+  <div class="tpl-container">
+    <div class="tpl-section-head">
+      <h2 class="tpl-h2">The client&rsquo;s mantra, in their own words.</h2>
+      <p class="tpl-lead tpl-muted">The mantra and the six values.</p>
+    </div>
+    <!-- @include sections/values-grid.html -->
+  </div>
+</section>
+<section class="tpl-section tpl-values tpl-values--field tpl-on-accent" data-for-theme="editorial" aria-label="Values, color field" hidden>
+  <div class="tpl-container">
+    <h2 class="tpl-eyebrow">Our values</h2>
+    <!-- @include sections/values-field.html -->
+    <p class="tpl-values__mantra">The client&rsquo;s mantra, in their own words.</p>
+  </div>
+</section>
+<section class="tpl-section tpl-values tpl-values--rail" data-for-theme="kinetic" aria-label="Values, rail" hidden>
+  <div class="tpl-container">
+    <div class="tpl-section-head">
+      <h2 class="tpl-h2">The client&rsquo;s mantra, in their own words.</h2>
+      <p class="tpl-lead tpl-muted">The mantra and the six values. Scroll the rail; on the page it pins and follows vertical scroll.</p>
+    </div>
+    <!-- @include sections/values-rail.html -->
+  </div>
+</section>
+</div>
+<!-- @include ds/theme-follow.html -->
+</body>
+</html>

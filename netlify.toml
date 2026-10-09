@@ -1,0 +1,8 @@
+# Vite builds the editable HTML entries and their assets into a standalone site.
+[build]
+  base = "."
+  command = "npm run verify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"

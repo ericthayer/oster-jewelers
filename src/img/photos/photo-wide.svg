@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350">
+  <title>Client photo placeholder: Scale</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f7377"/><stop offset="1" stop-color="#3b3e41"/></linearGradient>
+    <pattern id="p" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="2400" height="1350" fill="url(#g)"/>
+  <rect width="2400" height="1350" fill="url(#p)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1110 475) scale(7.5)">
+    <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/>
+    <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+  </g>
+  <text x="1200" y="785" fill="#ffffff" fill-opacity="0.85" font-family="Montserrat, Arial, sans-serif" font-size="64" font-weight="700" text-anchor="middle">Client photo: Scale</text>
+  <text x="1200" y="865" fill="#ffffff" fill-opacity="0.6" font-family="Montserrat, Arial, sans-serif" font-size="44" text-anchor="middle">16:9 landscape, fleet, site or team</text>
+</svg>

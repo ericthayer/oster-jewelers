@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="605" viewBox="0 0 1400 605">
+  <title>Client logo placeholder</title>
+  <rect x="40" y="102" width="400" height="400" fill="#E87722"/>
+  <path d="M40 502L440 102V232L170 502Z" fill="#171717" fill-opacity="0.9"/>
+  <text x="500" y="350" fill="#171717" font-family="Montserrat, Arial, sans-serif" font-size="210" font-weight="800" letter-spacing="-6">CLIENT</text>
+  <text x="508" y="460" fill="#171717" font-family="Montserrat, Arial, sans-serif" font-size="62" font-weight="600" letter-spacing="10">LOGO PLACEHOLDER</text>
+</svg>

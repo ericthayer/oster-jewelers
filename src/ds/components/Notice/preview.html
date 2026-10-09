@@ -1,0 +1,16 @@
+<!-- @dsCard group="Feedback" height=280 subtitle="Info, success and danger; every status carries an icon and a word, never color alone" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notice</title>
+<style>.pv { display: grid; gap: var(--space-4); padding: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: start; }</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-notice tpl-notice--info"><svg class="tpl-icon" data-tpl-icon="info-circle"></svg><div class="tpl-notice__body"><p class="tpl-notice__title">After-hours support</p><p>For urgent issues, call (555) 010-0100.</p></div></div>
+  <div class="tpl-notice tpl-notice--success"><svg class="tpl-icon" data-tpl-icon="circle-check"></svg><div class="tpl-notice__body"><p class="tpl-notice__title">Request sent</p><p>We will follow up by phone or email.</p></div></div>
+  <div class="tpl-notice tpl-notice--danger"><svg class="tpl-icon" data-tpl-icon="alert-triangle"></svg><div class="tpl-notice__body"><p class="tpl-notice__title">Upload failed</p><p>The file is over 10 MB. Try a smaller PDF.</p></div></div>
+</div>
+</body>
+</html>

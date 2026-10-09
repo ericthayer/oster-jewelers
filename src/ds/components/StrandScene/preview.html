@@ -1,0 +1,25 @@
+<!-- @dsCard group="Motion" height=520 width=1280 subtitle="three.js strands carrying light pulses; the Kinetic hero background" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>StrandScene</title>
+<style>
+  .pv { position: relative; min-height: 520px; overflow: hidden; background: var(--neutral-1000); color: var(--neutral-50); }
+  .pv__scene { position: absolute; inset: 0; }
+  .pv__scene::before { content: ""; position: absolute; inset: 0; background: radial-gradient(48% 42% at 70% 40%, rgba(232, 119, 34, 0.22), transparent 70%); }
+  .pv__scene canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+  .pv__note { position: absolute; left: var(--space-6); bottom: var(--space-6); max-width: 36rem; font-size: var(--fs-body-sm); color: var(--neutral-400); }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="pv__scene" data-tpl-scene aria-hidden="true"></div>
+  <p class="pv__note">Sixteen glass strands, forty-eight pulses in the brand accent and highlight. The camera dollies in as the hero scrolls and leans with the pointer. Off screen and hidden tabs pause it; reduced motion shows one still frame; without WebGL only the CSS glow renders.</p>
+</div>
+<script type="module">
+  import * as THREE from '{{vendor:three}}';
+  if (window.SiteDS) window.SiteDS.scene.mountAll(THREE);
+</script>
+</body>
+</html>

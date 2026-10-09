@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1333" viewBox="0 0 2000 1333">
+  <title>Client photo placeholder: Craft</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5c5650"/><stop offset="1" stop-color="#2e2b28"/></linearGradient>
+    <pattern id="p" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="2000" height="1333" fill="url(#g)"/>
+  <rect width="2000" height="1333" fill="url(#p)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(910 466) scale(7.5)">
+    <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/>
+    <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+  </g>
+  <text x="1000" y="776" fill="#ffffff" fill-opacity="0.85" font-family="Montserrat, Arial, sans-serif" font-size="64" font-weight="700" text-anchor="middle">Client photo: Craft</text>
+  <text x="1000" y="856" fill="#ffffff" fill-opacity="0.6" font-family="Montserrat, Arial, sans-serif" font-size="44" text-anchor="middle">3:2 landscape, the work itself</text>
+</svg>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="engineered">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Name | Redesign concepts</title>
+<meta name="robots" content="noindex">
+<script type="module" src="/src/main.ts"></script>
+<style>
+  .hub-grid { display: grid; gap: var(--space-5); }
+  @media (min-width: 768px) { .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1280px) { .hub-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .hub-card { display: flex; flex-direction: column; overflow: hidden; background: var(--surface-raised); border: 1px solid var(--border-strong); border-radius: var(--radius-card); }
+  .hub-card__body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); flex: 1; }
+  .hub-card__links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin-top: auto; }
+  .hub-card .tpl-media { border-radius: 0; }
+</style>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <section class="tpl-section" aria-labelledby="hub-title">
+    <div class="tpl-container">
+      <div class="tpl-section-head">
+        <img class="tpl-logo" src="../src/img/logo/logo.svg" alt="Client Name" width="1400" height="605" style="height: 56px; align-self: flex-start">
+        <h1 class="tpl-display tpl-display--lg" id="hub-title">Redesign concepts</h1>
+        <p class="tpl-lead tpl-muted">Four directions on one brand core and one component system. Each Home page is built only from the design system; switching concepts changes tokens, section variants and motion, not components. Cinematic and Engineered are the primary pair; Editorial and Kinetic are the backups. Keep the concepts the client spec names and delete the rest.</p>
+      </div>
+      <ul class="hub-grid" role="list">
+        <li class="hub-card" data-theme="cinematic" style="--radius-card: 1rem;">
+          <div class="tpl-media tpl-media--wide" style="--focus: 50% 32%"><img src="../src/img/photos/photo-hero.svg" alt="" loading="lazy"></div>
+          <div class="hub-card__body">
+            <p><span class="tpl-tag tpl-tag--accent">Primary</span></p>
+            <h2 class="tpl-h3">Cinematic</h2>
+            <p class="tpl-muted">Dark and cinematic. The accent is the light in the frame. Suits a dark live site.</p>
+            <div class="hub-card__links"><a class="tpl-arrow-link" href="cinematic/index.html">Home page<svg class="tpl-icon" data-tpl-icon="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></svg></a></div>
+          </div>
+        </li>
+        <li class="hub-card" data-theme="engineered" style="--radius-card: 1rem;">
+          <div class="tpl-media tpl-media--wide" style="--focus: 50% 80%"><img src="../src/img/photos/photo-wide.svg" alt="" loading="lazy"></div>
+          <div class="hub-card__body">
+            <p><span class="tpl-tag tpl-tag--accent">Secondary</span></p>
+            <h2 class="tpl-h3">Engineered</h2>
+            <p class="tpl-muted">Light and engineered. Facts set like a title block, for buyers and procurement.</p>
+            <div class="hub-card__links"><a class="tpl-arrow-link" href="engineered/index.html">Home page<svg class="tpl-icon" data-tpl-icon="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></svg></a></div>
+          </div>
+        </li>
+        <li class="hub-card" data-theme="editorial">
+          <div class="tpl-media tpl-media--wide" style="--focus: 40% 55%"><img src="../src/img/photos/photo-craft.svg" alt="" loading="lazy"></div>
+          <div class="hub-card__body">
+            <p><span class="tpl-tag">Alternate</span></p>
+            <h2 class="tpl-h3">Editorial</h2>
+            <p class="tpl-muted">Light and people-first. One accent field, team photography, the values up front.</p>
+            <div class="hub-card__links"><a class="tpl-arrow-link" href="editorial/index.html">Home page<svg class="tpl-icon" data-tpl-icon="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></svg></a></div>
+          </div>
+        </li>
+        <li class="hub-card" data-theme="kinetic" style="--radius-card: 1rem;">
+          <div class="tpl-media tpl-media--wide" style="--focus: 50% 45%"><img src="../src/img/photos/photo-detail.svg" alt="" loading="lazy"></div>
+          <div class="hub-card__body">
+            <p><span class="tpl-tag">Motion-led</span></p>
+            <h2 class="tpl-h3">Kinetic</h2>
+            <p class="tpl-muted">Dark glass and light in motion: a WebGL strand scene, an island nav, service tiles that morph into sheets, a card stack and a values rail. Reads like an application.</p>
+            <div class="hub-card__links"><a class="tpl-arrow-link" href="kinetic/index.html">Home page<svg class="tpl-icon" data-tpl-icon="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></svg></a></div>
+          </div>
+        </li>
+      </ul>
+      <p class="tpl-small tpl-muted" style="margin-top: var(--space-8)"><a class="tpl-arrow-link" href="../brandkit/index.html">Concept boards<svg class="tpl-icon" data-tpl-icon="arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></svg></a></p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

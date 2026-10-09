@@ -1,0 +1,23 @@
+<!-- @dsCard group="Sections" height=620 width=1280 subtitle="Sticky cards that pile up; scroll inside the card (GSAP scales them back on the page)" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardStack</title>
+<style>
+  .pv { height: 620px; overflow: auto; overscroll-behavior: contain; padding-block: var(--space-10) 50vh; --stack-top: var(--space-4); }
+  .pv .tpl-reasons--stack .tpl-reason { min-height: 360px; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-container">
+    <div class="tpl-section-head">
+      <h2 class="tpl-h2">Why partners choose us</h2>
+      <p class="tpl-lead tpl-muted">Four things a customer can count on, on every job. Scroll this card to see the pile.</p>
+    </div>
+    <!-- @include sections/reasons.html modifier=" tpl-reasons--stack" attrs="" -->
+  </div>
+</div>
+</body>
+</html>

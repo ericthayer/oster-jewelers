@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en" data-theme="cinematic">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Name | Concept boards</title>
+<meta name="robots" content="noindex">
+<script type="module" src="/src/main.ts"></script>
+<style>
+  /* Brand-kit boards: presentation layout only (not part of the site bundle).
+     3 x 3 panels on a charcoal canvas, each board painted by its own data-theme. */
+  .bk-board { padding: 28px; background: var(--neutral-1000); color: var(--neutral-50); }
+  .bk-board__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; margin-bottom: 20px; }
+  .bk-board__kicker { font: 600 11px/1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--neutral-400); }
+  .bk-board__name { margin-top: 8px; font: 800 32px/1 var(--font-sans); letter-spacing: -0.02em; color: var(--neutral-50); }
+  .bk-board__summary { max-width: 52ch; font-size: 14px; line-height: 1.55; color: var(--neutral-300); }
+  .bk-board__dials { font: 600 12px/1.4 var(--font-sans); color: var(--neutral-400); font-variant-numeric: tabular-nums; }
+  .bk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 900px) { .bk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .bk-grid { grid-template-columns: 1fr; } }
+  .bk-panel { position: relative; display: flex; flex-direction: column; min-width: 0; aspect-ratio: 4 / 3; padding: 22px 22px 44px; overflow: hidden; background: var(--surface); color: var(--text); border-radius: var(--radius-card); }
+  .bk-panel--raised { background: var(--surface-raised); }
+  .bk-panel--sunken { background: var(--surface-sunken); }
+  .bk-panel--bleed { padding: 0; }
+  .bk-panel.tpl-on-accent { background: var(--surface-accent); color: var(--on-accent); }
+  .bk-label { position: absolute; left: 22px; bottom: 16px; z-index: 2; font: 600 10px/1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .bk-panel--bleed .bk-label { left: 0; bottom: 0; padding: 10px 14px; background: var(--surface); }
+  .bk-center { display: grid; place-items: center; flex: 1; }
+  .bk-logo { width: 72%; max-width: 320px; height: auto; }
+  .bk-note { margin-top: auto; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+  .bk-note strong { color: var(--text); }
+
+  /* Digital application: a real header + hero at 1280px, zoomed to fit. */
+  .bk-screen { width: 1280px; height: 800px; overflow: hidden; background: var(--surface); pointer-events: none; }
+  .bk-screen .tpl-hero--cinematic { min-height: 728px; }
+  .bk-screen .tpl-hero--split, .bk-screen .tpl-hero--editorial { padding-top: 48px; }
+
+  /* Essence */
+  .bk-essence { margin-top: auto; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.05; font-weight: var(--display-weight); letter-spacing: var(--display-tracking); text-transform: var(--display-transform); text-wrap: balance; }
+
+  /* Color */
+  .bk-swatches { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; flex: 1; }
+  .bk-swatch { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 8px 10px; font: 600 11px/1.3 var(--font-sans); font-variant-numeric: tabular-nums; border-radius: var(--radius-card); border: 1px solid var(--border); }
+  .bk-swatch--big { grid-row: span 2; font-size: 12px; }
+  .bk-swatch span { opacity: 0.85; font-weight: 500; }
+
+  /* Type */
+  .bk-aa { font-size: 88px; line-height: 0.9; font-weight: var(--display-weight); letter-spacing: var(--display-tracking); }
+  .bk-type-lines { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+  .bk-type-lines .l1 { font-size: 20px; line-height: 1.1; font-weight: var(--display-weight); text-transform: var(--display-transform); letter-spacing: var(--display-tracking); }
+  .bk-type-lines .l2 { font-size: 14px; color: var(--text-muted); }
+  .bk-type-lines .l3 { font: var(--label-weight) 11px/1.2 var(--label-family); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--accent-text); }
+
+  /* Photo crops */
+  .bk-photo { position: absolute; inset: 0; overflow: hidden; }
+  .bk-photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--media-filter); }
+  .bk-photo--zoom img { transform: scale(var(--zoom, 2.6)); transform-origin: var(--origin, 50% 50%); }
+
+  /* Construction details */
+  .bk-stencil { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; align-items: center; }
+  .bk-stencil__crop { aspect-ratio: 1; background-repeat: no-repeat; background-size: 520%; border: 1px dashed var(--field-border); border-radius: var(--radius-card); }
+  .bk-notch { aspect-ratio: 1; background: var(--accent); clip-path: polygon(0 0, calc(100% - 28%) 0, 100% 28%, 100% 100%, 0 100%); }
+  .bk-shapes { display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; }
+  .bk-shapes span { display: block; background: var(--accent); }
+  .bk-shapes .pill { width: 38%; height: 44px; border-radius: var(--radius-pill); }
+  .bk-shapes .card { width: 28%; aspect-ratio: 4 / 5; border-radius: var(--radius-lg); background: var(--surface-sunken); border: 1px solid var(--border-strong); }
+  .bk-shapes .field { width: 22%; height: 44px; border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--field-border); }
+
+  /* Kinetic construction: the shell and its core, plus a pill */
+  .bk-bezel { display: flex; align-items: center; justify-content: center; gap: 14px; flex: 1; }
+  .bk-bezel__shell { width: 62%; aspect-ratio: 16 / 10; padding: 8px; background: var(--card-bg); border: var(--card-border); border-radius: var(--radius-2xl); box-shadow: var(--card-shadow); }
+  .bk-bezel__core { display: flex; align-items: flex-end; height: 100%; padding: 14px; background: var(--shell-core); border-radius: var(--radius-xl); box-shadow: var(--shell-highlight); }
+  .bk-bezel__core span { width: 40%; height: 6px; background: var(--accent); border-radius: var(--radius-pill); }
+  .bk-bezel__pill { width: 22%; height: 44px; background: var(--accent); border-radius: var(--radius-pill); }
+  .bk-screen .tpl-header--island { position: absolute; }
+  .bk-screen .tpl-hero--scene { min-height: 800px; }
+  .bk-panel--veil { background: var(--surface); background-image: var(--page-veil-bg); }
+
+  /* System detail */
+  .bk-detail { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .bk-detail .tpl-btn { --btn-height: 40px; --btn-pad: 16px; }
+  .bk-detail .tpl-input { min-height: 40px; padding-block: 8px; }
+  .bk-icons { display: flex; gap: 12px; color: var(--accent-text); }
+  .bk-icons .tpl-icon { width: 24px; height: 24px; }
+</style>
+
+<style>
+  body { background: var(--neutral-1000); }
+  .bk-page { display: flex; flex-direction: column; gap: 40px; max-width: 1440px; margin: 0 auto; padding: 40px 24px 96px; }
+  .bk-intro { display: flex; flex-direction: column; gap: 12px; max-width: 64ch; color: var(--neutral-50); }
+  .bk-intro h1 { font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+  .bk-intro p { color: var(--neutral-300); line-height: 1.6; }
+  .bk-intro a { color: var(--brand-accent); }
+</style>
+</head>
+<body>
+<main id="main" class="bk-page">
+  <header class="bk-intro">
+    <h1>Four directions, one brand core</h1>
+    <p>Every board uses the same brand: Montserrat, brand accent #E87722, ink #171717, the client logo and the client&rsquo;s own photography. What changes is the expression: surface, type treatment, corners, rhythm, image grade and motion. Cinematic and Engineered are the primary pair; Editorial and Kinetic are the backups.</p>
+    <p><a href="../concepts/cinematic/index.html">Cinematic home</a>, <a href="../concepts/engineered/index.html">Engineered home</a>, <a href="../concepts/editorial/index.html">Editorial home</a>, <a href="../concepts/kinetic/index.html">Kinetic home</a></p>
+  </header>
+  <section class="bk-board" data-theme="cinematic" aria-labelledby="bk-wl-name">
+  <header class="bk-board__head">
+    <div>
+      <p class="bk-board__kicker">Concept A, primary</p>
+      <h2 class="bk-board__name" id="bk-wl-name">Cinematic</h2>
+    </div>
+    <p class="bk-board__summary">Dark and cinematic. The accent is the light in the frame: actions, key figures, the active state. All-sharp corners, with a notch cut from primary actions.</p>
+    <p class="bk-board__dials">Variance 7 / Motion 5 / Density 4</p>
+  </header>
+  <div class="bk-grid">
+    <div class="bk-panel">
+      <div class="bk-center"><img class="bk-logo" src="../src/img/logo/logo-reversed.svg" alt="Client logo placeholder, reversed" width="1400" height="605"></div>
+      <span class="bk-label">Logo on surface</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-stencil">
+        <div class="bk-stencil__crop" role="img" aria-label="Detail of the logo placeholder" style="background-image: url('../src/img/logo/logo-reversed.svg'); background-position: 10% 88%;"></div>
+        <div class="bk-notch" aria-hidden="true"></div>
+      </div>
+      <p class="bk-note"><strong>The notch</strong> can echo a detail of the client&rsquo;s mark. Primary actions and photo frames only.</p>
+      <span class="bk-label">Construction</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed" data-bk-fit>
+      <div class="bk-screen" aria-hidden="true" inert>
+        <div class="tpl-header" style="position: absolute; inset: 0 0 auto 0; background: transparent; --text: var(--text-on-photo);">
+          <div class="tpl-container tpl-header__bar">
+            <span class="tpl-header__brand"><img class="tpl-logo" src="../src/img/logo/logo-reversed.svg" alt="" width="1400" height="605"></span>
+            <nav class="tpl-nav" style="display: block"><ul class="tpl-nav__list" role="list"><li><span class="tpl-nav__link">Services</span></li><li><span class="tpl-nav__link">Safety</span></li><li><span class="tpl-nav__link">About</span></li><li><span class="tpl-nav__link">Careers</span></li><li><span class="tpl-nav__link">Subcontractors</span></li><li><span class="tpl-nav__link">Contact</span></li></ul></nav>
+            <div class="tpl-header__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--sm" style="display: inline-flex">Request a quote</span></div>
+          </div>
+        </div>
+        <section class="tpl-hero tpl-hero--cinematic">
+          <div class="tpl-hero__media" style="--focus: 50% 32%"><img src="../src/img/photos/photo-hero.svg" alt=""></div>
+          <div class="tpl-container tpl-hero__inner">
+            <div class="tpl-hero__content">
+              <p class="tpl-display">Your headline. Two lines.</p>
+              <p class="tpl-lead">One plain line on the work, the place and the outcome, in twenty words or fewer.</p>
+              <div class="tpl-hero__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--lg">Request a quote</span><span class="tpl-btn tpl-btn--on-photo tpl-btn--lg">(555) 010-0100</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <span class="bk-label">Digital</span>
+    </div>
+    <div class="bk-panel bk-panel--sunken">
+      <p class="bk-essence">The client&rsquo;s mantra, in their own words.</p>
+      <span class="bk-label">Brand essence</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-swatches">
+        <div class="bk-swatch bk-swatch--big" style="background: var(--accent); color: var(--on-accent); border-color: transparent;">Brand accent #E87722<span>Ink text 6.1:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface-raised); color: var(--text);">Raised<span>#171717</span></div>
+        <div class="bk-swatch" style="background: var(--neutral-50); color: var(--ink);">Text<span>17.4:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface-sunken); color: var(--text);">Sunken<span>#080807</span></div>
+        <div class="bk-swatch" style="background: var(--highlight); color: var(--ink); border-color: transparent;">Focus<span>12.8:1</span></div>
+      </div>
+      <span class="bk-label">Color</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <p class="bk-aa" aria-hidden="true">Aa</p>
+      <div class="bk-type-lines">
+        <span class="l1">Your headline.</span>
+        <span class="l2">Montserrat 800, uppercase, tight tracking</span>
+        <span class="l3">Labels 700, 0.08em</span>
+      </div>
+      <span class="bk-label">Type</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo bk-photo--zoom" style="--zoom: 3.2; --origin: 50% 80%"><img src="../src/img/photos/photo-wide.svg" alt="Client logo placeholder, cropped" loading="lazy"></div>
+      <span class="bk-label">The mark in the field</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo" style="--focus: 55% 40%"><img src="../src/img/photos/photo-people.svg" alt="Client photo placeholder: people at work" loading="lazy"></div>
+      <span class="bk-label">Image: low light, practical light, graded dark</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-detail">
+        <div class="tpl-cluster" style="--cluster-gap: 8px"><span class="tpl-btn tpl-btn--primary">Request a quote</span><span class="tpl-btn tpl-btn--secondary">Our services</span></div>
+        <input class="tpl-input" value="Project location" aria-label="Sample field" readonly>
+        <div class="tpl-cluster" style="--cluster-gap: 6px"><span class="tpl-tag tpl-tag--accent">Now hiring</span><span class="tpl-tag">City, ST</span></div>
+        <div class="bk-icons"><svg class="tpl-icon" data-tpl-icon="plug-connected" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /> <path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /> <path d="M3 21l2.5 -2.5" /> <path d="M18.5 5.5l2.5 -2.5" /> <path d="M10 11l-2 2" /> <path d="M13 14l-2 2" /></svg><svg class="tpl-icon" data-tpl-icon="backhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M11 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M13 19l-9 0" /> <path d="M4 15l9 0" /> <path d="M8 12v-5h2a3 3 0 0 1 3 3v5" /> <path d="M5 15v-2a1 1 0 0 1 1 -1h7" /> <path d="M21.12 9.88l-3.12 -4.88l-5 5" /> <path d="M21.12 9.88a3 3 0 0 1 -2.12 5.12a3 3 0 0 1 -2.12 -.88l4.24 -4.24" /></svg><svg class="tpl-icon" data-tpl-icon="crane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21h6" /> <path d="M9 21v-18l-6 6h18" /> <path d="M9 3l10 6" /> <path d="M17 9v4a2 2 0 1 1 -2 2" /></svg><svg class="tpl-icon" data-tpl-icon="building-broadcast-tower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /> <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /> <path d="M9 21l3 -9l3 9" /> <path d="M10 19h4" /></svg><svg class="tpl-icon" data-tpl-icon="road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19l4 -14" /> <path d="M16 5l4 14" /> <path d="M12 8v-2" /> <path d="M12 13v-2" /> <path d="M12 18v-2" /></svg></div>
+      </div>
+      <span class="bk-label">System</span>
+    </div>
+  </div>
+</section>
+
+  <section class="bk-board" data-theme="engineered" aria-labelledby="bk-ab-name">
+  <header class="bk-board__head">
+    <div>
+      <p class="bk-board__kicker">Concept B, secondary</p>
+      <h2 class="bk-board__name" id="bk-ab-name">Engineered</h2>
+    </div>
+    <p class="bk-board__summary">Light and engineered. The accent is redline markup. Facts set like a drawing&rsquo;s title block, 2px corners, Michroma labels and restrained motion.</p>
+    <p class="bk-board__dials">Variance 5 / Motion 3 / Density 5</p>
+  </header>
+  <div class="bk-grid">
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-center"><img class="bk-logo" src="../src/img/logo/logo.svg" alt="Client logo placeholder, full color" width="1400" height="605"></div>
+      <span class="bk-label">Logo on surface</span>
+    </div>
+    <div class="bk-panel">
+      <dl class="tpl-plate" style="margin-bottom: 14px">
+        <div class="tpl-plate__cell"><dt class="tpl-plate__label">Service lines</dt><dd class="tpl-plate__value">5</dd></div>
+        <div class="tpl-plate__cell"><dt class="tpl-plate__label">Part of</dt><dd class="tpl-plate__value">Parent company</dd></div>
+        <div class="tpl-plate__cell"><dt class="tpl-plate__label">Offices</dt><dd class="tpl-plate__value">ST, ST</dd></div>
+        <div class="tpl-plate__cell"><dt class="tpl-plate__label">EMR</dt><dd class="tpl-plate__value"><span class="tpl-pending">Pending</span></dd></div>
+      </dl>
+      <p class="bk-note"><strong>The title block.</strong> Facts set like a technical drawing; rules only where they organize data.</p>
+      <span class="bk-label">Construction</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed" data-bk-fit>
+      <div class="bk-screen" aria-hidden="true" inert>
+        <div class="tpl-header" style="border-bottom: 1px solid var(--border);">
+          <div class="tpl-container tpl-header__bar">
+            <span class="tpl-header__brand"><img class="tpl-logo" src="../src/img/logo/logo.svg" alt="" width="1400" height="605"></span>
+            <nav class="tpl-nav" style="display: block"><ul class="tpl-nav__list" role="list"><li><span class="tpl-nav__link">Services</span></li><li><span class="tpl-nav__link">Safety</span></li><li><span class="tpl-nav__link">About</span></li><li><span class="tpl-nav__link">Careers</span></li><li><span class="tpl-nav__link">Subcontractors</span></li><li><span class="tpl-nav__link">Contact</span></li></ul></nav>
+            <div class="tpl-header__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--sm" style="display: inline-flex">Request a quote</span></div>
+          </div>
+        </div>
+        <section class="tpl-hero tpl-hero--split">
+          <div class="tpl-container tpl-hero__grid" style="grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px;">
+            <div class="tpl-hero__content">
+              <span class="tpl-eyebrow">Category line</span>
+              <p class="tpl-display tpl-display--lg">A precise headline in one line.</p>
+              <p class="tpl-lead tpl-muted">One plain line on the services and the customers they serve.</p>
+              <div class="tpl-hero__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--lg">Request a quote</span><span class="tpl-btn tpl-btn--secondary tpl-btn--lg">Our services</span></div>
+            </div>
+            <div class="tpl-hero__aside">
+              <div class="tpl-media" style="--focus: 50% 80%"><img src="../src/img/photos/photo-wide.svg" alt=""></div>
+              <dl class="tpl-plate"><div class="tpl-plate__cell"><dt class="tpl-plate__label">Service lines</dt><dd class="tpl-plate__value">5</dd></div><div class="tpl-plate__cell"><dt class="tpl-plate__label">Call</dt><dd class="tpl-plate__value">(555) 010-0100</dd></div></dl>
+            </div>
+          </div>
+        </section>
+      </div>
+      <span class="bk-label">Digital</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <p class="bk-essence">One line that sums up the brand.</p>
+      <span class="bk-label">Brand essence</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-swatches">
+        <div class="bk-swatch bk-swatch--big" style="background: var(--accent); color: var(--on-accent); border-color: transparent;">Brand accent #E87722<span>Ink text 6.1:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface); color: var(--text);">Surface<span>#F5F4F2</span></div>
+        <div class="bk-swatch" style="background: var(--ink); color: var(--neutral-50); border-color: transparent;">Ink<span>16.3:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface-sunken); color: var(--accent-text);">Redline text<span>#A44C0F 5.3:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface-raised); color: var(--text);">Raised<span>#FEFDFB</span></div>
+      </div>
+      <span class="bk-label">Color</span>
+    </div>
+    <div class="bk-panel">
+      <p class="bk-aa" aria-hidden="true">Aa</p>
+      <div class="bk-type-lines">
+        <span class="l1">A precise headline in one line.</span>
+        <span class="l2">Montserrat 650, sentence case, tight tracking</span>
+        <span class="l3">Michroma labels, 0.06em</span>
+      </div>
+      <span class="bk-label">Type</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo bk-photo--zoom" style="--zoom: 2.6; --origin: 80% 52%"><img src="../src/img/photos/photo-site.svg" alt="Client logo placeholder, cropped" loading="lazy"></div>
+      <span class="bk-label">The mark in the field</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo" style="--focus: 50% 75%"><img src="../src/img/photos/photo-wide.svg" alt="Client photo placeholder: scale" loading="lazy" style="object-position: 50% 78%"></div>
+      <span class="bk-label">Image: daylight, equipment and scale, cool grade</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-detail">
+        <div class="tpl-cluster" style="--cluster-gap: 8px"><span class="tpl-btn tpl-btn--primary">Request a quote</span><span class="tpl-btn tpl-btn--secondary">Our services</span></div>
+        <input class="tpl-input" value="Project location" aria-label="Sample field" readonly>
+        <div class="tpl-cluster" style="--cluster-gap: 6px"><span class="tpl-tag tpl-tag--accent">Now hiring</span><span class="tpl-tag">City, ST</span></div>
+        <div class="bk-icons"><svg class="tpl-icon" data-tpl-icon="plug-connected" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /> <path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /> <path d="M3 21l2.5 -2.5" /> <path d="M18.5 5.5l2.5 -2.5" /> <path d="M10 11l-2 2" /> <path d="M13 14l-2 2" /></svg><svg class="tpl-icon" data-tpl-icon="backhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M11 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M13 19l-9 0" /> <path d="M4 15l9 0" /> <path d="M8 12v-5h2a3 3 0 0 1 3 3v5" /> <path d="M5 15v-2a1 1 0 0 1 1 -1h7" /> <path d="M21.12 9.88l-3.12 -4.88l-5 5" /> <path d="M21.12 9.88a3 3 0 0 1 -2.12 5.12a3 3 0 0 1 -2.12 -.88l4.24 -4.24" /></svg><svg class="tpl-icon" data-tpl-icon="crane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21h6" /> <path d="M9 21v-18l-6 6h18" /> <path d="M9 3l10 6" /> <path d="M17 9v4a2 2 0 1 1 -2 2" /></svg><svg class="tpl-icon" data-tpl-icon="building-broadcast-tower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /> <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /> <path d="M9 21l3 -9l3 9" /> <path d="M10 19h4" /></svg><svg class="tpl-icon" data-tpl-icon="road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19l4 -14" /> <path d="M16 5l4 14" /> <path d="M12 8v-2" /> <path d="M12 13v-2" /> <path d="M12 18v-2" /></svg></div>
+      </div>
+      <span class="bk-label">System</span>
+    </div>
+  </div>
+</section>
+
+  <section class="bk-board" data-theme="editorial" aria-labelledby="bk-cr-name">
+  <header class="bk-board__head">
+    <div>
+      <p class="bk-board__kicker">Concept C, alternate</p>
+      <h2 class="bk-board__name" id="bk-cr-name">Editorial</h2>
+    </div>
+    <p class="bk-board__summary">Light and people-first. One bold accent field per page, 16px media, pill actions, team photography and the values up front.</p>
+    <p class="bk-board__dials">Variance 6 / Motion 4 / Density 3</p>
+  </header>
+  <div class="bk-grid">
+    <div class="bk-panel">
+      <div class="bk-center"><img class="bk-logo" src="../src/img/logo/logo.svg" alt="Client logo placeholder, full color" width="1400" height="605"></div>
+      <span class="bk-label">Logo on surface</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-shapes" aria-hidden="true"><span class="pill"></span><span class="card"></span><span class="field"></span></div>
+      <p class="bk-note"><strong>Soft, never round.</strong> Pills for actions and tags, 16px for cards and media, 8px for fields.</p>
+      <span class="bk-label">Construction</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed" data-bk-fit>
+      <div class="bk-screen" aria-hidden="true" inert>
+        <div class="tpl-header">
+          <div class="tpl-container tpl-header__bar">
+            <span class="tpl-header__brand"><img class="tpl-logo" src="../src/img/logo/logo.svg" alt="" width="1400" height="605"></span>
+            <nav class="tpl-nav" style="display: block"><ul class="tpl-nav__list" role="list"><li><span class="tpl-nav__link">Services</span></li><li><span class="tpl-nav__link">Safety</span></li><li><span class="tpl-nav__link">About</span></li><li><span class="tpl-nav__link">Careers</span></li><li><span class="tpl-nav__link">Subcontractors</span></li><li><span class="tpl-nav__link">Contact</span></li></ul></nav>
+            <div class="tpl-header__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--sm" style="display: inline-flex">Request a quote</span></div>
+          </div>
+        </div>
+        <section class="tpl-hero tpl-hero--editorial">
+          <div class="tpl-container">
+            <p class="tpl-display">A people-first headline.</p>
+            <div class="tpl-hero__grid" style="grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: end;">
+              <div class="tpl-hero__content">
+                <p class="tpl-lead">One line on the people and the purpose behind the work.</p>
+                <div class="tpl-hero__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--lg">Request a quote</span></div>
+              </div>
+              <div class="tpl-hero__photos">
+                <div class="tpl-media tpl-media--portrait" style="--focus: 60% 30%; max-height: 420px"><img src="../src/img/photos/photo-people.svg" alt=""></div>
+                <div class="tpl-media" style="--focus: 40% 55%; max-height: 420px"><img src="../src/img/photos/photo-craft.svg" alt=""></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <span class="bk-label">Digital</span>
+    </div>
+    <div class="bk-panel tpl-on-accent">
+      <p class="bk-essence">A people-first headline.</p>
+      <span class="bk-label" style="color: var(--on-accent)">Brand essence</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <div class="bk-swatches">
+        <div class="bk-swatch bk-swatch--big" style="background: var(--accent); color: var(--on-accent); border-color: transparent;">Brand accent #E87722<span>One field per page</span></div>
+        <div class="bk-swatch" style="background: var(--surface); color: var(--text);">Surface<span>#FAF9F6</span></div>
+        <div class="bk-swatch" style="background: var(--ink); color: var(--neutral-50); border-color: transparent;">Ink<span>17.0:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface-sunken); color: var(--accent-text);">Accent text<span>#A44C0F</span></div>
+        <div class="bk-swatch" style="background: var(--highlight); color: var(--ink); border-color: transparent;">Highlight<span>Highlights only</span></div>
+      </div>
+      <span class="bk-label">Color</span>
+    </div>
+    <div class="bk-panel">
+      <p class="bk-aa" aria-hidden="true">A<span style="font-weight: 300">a</span></p>
+      <div class="bk-type-lines">
+        <span class="l1">Value one. <span style="font-weight: 300">Value two.</span></span>
+        <span class="l2">Montserrat 700, with 300 for contrast</span>
+        <span class="l3">Labels in sentence case</span>
+      </div>
+      <span class="bk-label">Type</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo bk-photo--zoom" style="--zoom: 2.2; --origin: 49% 79%"><img src="../src/img/photos/photo-wide.svg" alt="Client logo placeholder, cropped" loading="lazy"></div>
+      <span class="bk-label">The mark in the field</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo"><img src="../src/img/photos/photo-craft.svg" alt="Client photo placeholder: craft" loading="lazy"></div>
+      <span class="bk-label">Image: people and hands at work, warm and close</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-detail">
+        <div class="tpl-cluster" style="--cluster-gap: 8px"><span class="tpl-btn tpl-btn--primary">Request a quote</span><span class="tpl-btn tpl-btn--secondary">View open roles</span></div>
+        <input class="tpl-input" value="Project location" aria-label="Sample field" readonly>
+        <div class="tpl-cluster" style="--cluster-gap: 6px"><span class="tpl-tag tpl-tag--accent">Now hiring</span><span class="tpl-tag">City, ST</span></div>
+        <div class="bk-icons"><svg class="tpl-icon" data-tpl-icon="users-group" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /> <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M17 10h2a2 2 0 0 1 2 2v1" /> <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M3 13v-1a2 2 0 0 1 2 -2h2" /></svg><svg class="tpl-icon" data-tpl-icon="school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /> <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg><svg class="tpl-icon" data-tpl-icon="heart-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /> <path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" /> <path d="M12.5 15.5l2 2" /> <path d="M15 13l2 2" /></svg><svg class="tpl-icon" data-tpl-icon="shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" /> <path d="M15 19l2 2l4 -4" /></svg><svg class="tpl-icon" data-tpl-icon="truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" /></svg></div>
+      </div>
+      <span class="bk-label">System</span>
+    </div>
+  </div>
+</section>
+
+  <section class="bk-board" data-theme="kinetic" aria-labelledby="bk-lf-name">
+  <header class="bk-board__head">
+    <div>
+      <p class="bk-board__kicker">Concept D, motion-led</p>
+      <h2 class="bk-board__name" id="bk-lf-name">Kinetic</h2>
+    </div>
+    <p class="bk-board__summary">Dark glass and light in motion. Panels are two enclosures, actions are pills, labels are Michroma, and motion carries the concept: a WebGL strand scene, word-mask reveals, tiles that morph into sheets, a card stack, a values rail and an island nav.</p>
+    <p class="bk-board__dials">Variance 8 / Motion 9 / Density 3</p>
+  </header>
+  <div class="bk-grid">
+    <div class="bk-panel bk-panel--veil">
+      <div class="bk-center"><img class="bk-logo" src="../src/img/logo/logo-reversed.svg" alt="Client logo placeholder, reversed" width="1400" height="605"></div>
+      <span class="bk-label">Logo on surface</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-bezel" aria-hidden="true">
+        <div class="bk-bezel__shell"><div class="bk-bezel__core"><span></span></div></div>
+        <div class="bk-bezel__pill"></div>
+      </div>
+      <p class="bk-note"><strong>Two enclosures.</strong> An 8px glass shell around a 24px core, so every corner stays concentric. Actions are pills with the arrow in its own orb.</p>
+      <span class="bk-label">Construction</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed" data-bk-fit>
+      <div class="bk-screen" aria-hidden="true" inert>
+        <div class="tpl-header tpl-header--island">
+          <div class="tpl-container tpl-header__bar">
+            <span class="tpl-header__brand"><img class="tpl-logo" src="../src/img/logo/logo-reversed.svg" alt="" width="1400" height="605"></span>
+            <nav class="tpl-nav" style="display: block"><ul class="tpl-nav__list" role="list"><li><span class="tpl-nav__link">Services</span></li><li><span class="tpl-nav__link">Safety</span></li><li><span class="tpl-nav__link">About</span></li><li><span class="tpl-nav__link">Careers</span></li><li><span class="tpl-nav__link">Subcontractors</span></li><li><span class="tpl-nav__link">Contact</span></li></ul></nav>
+            <div class="tpl-header__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--sm tpl-header__cta" style="display: inline-flex">Request a quote</span></div>
+          </div>
+        </div>
+        <section class="tpl-hero tpl-hero--scene">
+          <div class="tpl-hero__scene" data-tpl-scene></div>
+          <div class="tpl-container tpl-hero__inner">
+            <div class="tpl-hero__content">
+              <span class="tpl-eyebrow">Category line</span>
+              <p class="tpl-display">A headline that moves.</p>
+              <p class="tpl-lead">One line on what the client delivers and why it matters to the buyer.</p>
+              <div class="tpl-hero__actions"><span class="tpl-btn tpl-btn--primary tpl-btn--lg tpl-btn--orb">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 7l-10 10" /> <path d="M8 7l9 0l0 9" /></svg></span><span class="tpl-btn tpl-btn--secondary tpl-btn--lg">Our services</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <span class="bk-label">Digital</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <p class="bk-essence">The client&rsquo;s mantra, in their own words.</p>
+      <span class="bk-label">Brand essence</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-swatches">
+        <div class="bk-swatch bk-swatch--big" style="background: var(--accent); color: var(--on-accent); border-color: transparent;">Brand accent #E87722<span>The light: pulses, glow, pills. Ink text 6.1:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface); color: var(--text);">Surface<span>#080807, text 18.2:1</span></div>
+        <div class="bk-swatch" style="background: var(--card-bg); color: var(--text-muted); border-color: var(--glass-line);">Glass<span>Muted text 7.5:1</span></div>
+        <div class="bk-swatch" style="background: var(--surface); color: var(--accent-text);">Accent text<span>6.8:1</span></div>
+        <div class="bk-swatch" style="background: var(--highlight); color: var(--ink); border-color: transparent;">Focus<span>13.4:1</span></div>
+      </div>
+      <span class="bk-label">Color</span>
+    </div>
+    <div class="bk-panel bk-panel--raised">
+      <p class="bk-aa" aria-hidden="true">Aa</p>
+      <div class="bk-type-lines">
+        <span class="l1">A headline that moves.</span>
+        <span class="l2">Montserrat 500, tight tracking, sentence case</span>
+        <span class="l3">Michroma labels, 0.14em</span>
+      </div>
+      <span class="bk-label">Type</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo bk-photo--zoom" style="--zoom: 3.2; --origin: 50% 80%"><img src="../src/img/photos/photo-wide.svg" alt="Client logo placeholder, cropped" loading="lazy"></div>
+      <span class="bk-label">The mark in the field</span>
+    </div>
+    <div class="bk-panel bk-panel--bleed">
+      <div class="bk-photo"><img src="../src/img/photos/photo-hero.svg" alt="Client photo placeholder: hero" loading="lazy" style="object-position: 50% 32%"></div>
+      <span class="bk-label">Image: low light, cool grade, light as the subject</span>
+    </div>
+    <div class="bk-panel">
+      <div class="bk-detail">
+        <div class="tpl-cluster" style="--cluster-gap: 8px"><span class="tpl-btn tpl-btn--primary tpl-btn--orb">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 7l-10 10" /> <path d="M8 7l9 0l0 9" /></svg></span><span class="tpl-btn tpl-btn--secondary">Our services</span></div>
+        <input class="tpl-input" value="Project location" aria-label="Sample field" readonly>
+        <div class="tpl-cluster" style="--cluster-gap: 6px"><span class="tpl-tag tpl-tag--accent">Now hiring</span><span class="tpl-tag">City, ST</span></div>
+        <div class="bk-icons"><svg class="tpl-icon" data-tpl-icon="plug-connected" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /> <path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /> <path d="M3 21l2.5 -2.5" /> <path d="M18.5 5.5l2.5 -2.5" /> <path d="M10 11l-2 2" /> <path d="M13 14l-2 2" /></svg><svg class="tpl-icon" data-tpl-icon="backhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M11 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M13 19l-9 0" /> <path d="M4 15l9 0" /> <path d="M8 12v-5h2a3 3 0 0 1 3 3v5" /> <path d="M5 15v-2a1 1 0 0 1 1 -1h7" /> <path d="M21.12 9.88l-3.12 -4.88l-5 5" /> <path d="M21.12 9.88a3 3 0 0 1 -2.12 5.12a3 3 0 0 1 -2.12 -.88l4.24 -4.24" /></svg><svg class="tpl-icon" data-tpl-icon="crane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21h6" /> <path d="M9 21v-18l-6 6h18" /> <path d="M9 3l10 6" /> <path d="M17 9v4a2 2 0 1 1 -2 2" /></svg><svg class="tpl-icon" data-tpl-icon="building-broadcast-tower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /> <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /> <path d="M9 21l3 -9l3 9" /> <path d="M10 19h4" /></svg><svg class="tpl-icon" data-tpl-icon="road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19l4 -14" /> <path d="M16 5l4 14" /> <path d="M12 8v-2" /> <path d="M12 13v-2" /> <path d="M12 18v-2" /></svg></div>
+      </div>
+      <span class="bk-label">System</span>
+    </div>
+  </div>
+</section>
+
+</main>
+<nav class="cx-bar" aria-label="Design concepts" data-concept-chrome>
+  <span class="cx-bar__label">Concept</span>
+  <a href="../concepts/cinematic/index.html">Cinematic</a>
+  <a href="../concepts/engineered/index.html">Engineered</a>
+  <a href="../concepts/editorial/index.html">Editorial</a>
+  <a href="../concepts/kinetic/index.html">Kinetic</a>
+  <a href="../brandkit/index.html" aria-current="page">Boards</a>
+</nav>
+<style>
+  /* Presentation chrome for concept review; not part of the design. */
+  .cx-bar { position: fixed; left: 12px; bottom: 12px; z-index: calc(var(--z-drawer) - 1); display: flex; align-items: center; gap: 2px; padding: 4px; font: 600 12px/1 var(--font-sans); color: var(--neutral-50); background: var(--ink); border-radius: var(--radius-pill); box-shadow: var(--shadow-overlay); }
+  .cx-bar__label { padding: 0 8px 0 10px; color: var(--neutral-400); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+  .cx-bar a { padding: 8px 12px; color: var(--neutral-50); text-decoration: none; white-space: nowrap; border-radius: var(--radius-pill); }
+  .cx-bar a:hover { background: var(--neutral-800); }
+  .cx-bar a[aria-current="page"] { background: var(--brand-accent); color: var(--ink); }
+  .cx-bar a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+  @media (max-width: 479px) { .cx-bar__label { display: none; } .cx-bar a { padding: 8px 9px; font-size: 11px; } }
+</style>
+
+<script>
+  /* Brand boards: zoom each 1280px screen to its panel width. */
+  (function () {
+    document.querySelectorAll('[data-bk-fit]').forEach(function (panel) {
+      var screen = panel.querySelector('.bk-screen');
+      if (!screen) return;
+      var fit = function () { screen.style.zoom = String(panel.clientWidth / 1280); };
+      fit();
+      if ('ResizeObserver' in window) new ResizeObserver(fit).observe(panel);
+    });
+  })();
+</script>
+
+</body>
+</html>

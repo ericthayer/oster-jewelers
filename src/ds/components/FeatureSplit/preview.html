@@ -1,0 +1,28 @@
+<!-- @dsCard group="Sections" height=560 width=1280 subtitle="Photo and copy side by side; two in a row at most, then change layout" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FeatureSplit</title>
+<style>.pv { padding-block: var(--space-10); }</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-container tpl-split tpl-split--reverse">
+    <figure class="tpl-split__media">
+      <div class="tpl-media tpl-media--tall" style="--focus: 55% 40%"><img src="{{asset:Photography/photo-people.svg}}" alt="Client photo placeholder: people at work"></div>
+    </figure>
+    <div class="tpl-split__content">
+      <h2 class="tpl-h2">Safety is our top priority</h2>
+      <p class="tpl-lead tpl-muted">One or two sentences on the safety commitment, backed by the record on the Safety page.</p>
+      <ul class="tpl-checks" role="list">
+        <li><svg class="tpl-icon" data-tpl-icon="shield-check"></svg>Safety practice one</li>
+        <li><svg class="tpl-icon" data-tpl-icon="users-group"></svg>Safety practice two</li>
+        <li><svg class="tpl-icon" data-tpl-icon="clipboard-check"></svg>Safety record and documents on request</li>
+      </ul>
+      <a class="tpl-arrow-link" href="#safety">See our safety program<svg class="tpl-icon" data-tpl-icon="arrow-right"></svg></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

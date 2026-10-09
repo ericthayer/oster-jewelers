@@ -1,0 +1,14 @@
+<script>
+  /* Preview helper: show the variant each concept uses, following the DS theme switcher. */
+  (function () {
+    var root = document.documentElement;
+    function sync() {
+      var theme = root.getAttribute('data-theme') || 'cinematic';
+      document.querySelectorAll('[data-for-theme]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-for-theme').split(' ').indexOf(theme) === -1;
+      });
+    }
+    sync();
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>

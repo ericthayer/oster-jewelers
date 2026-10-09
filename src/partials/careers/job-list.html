@@ -1,0 +1,23 @@
+<div class="tpl-jobs" id="{{id|jobs}}" data-tpl-jobs data-src="{{src|}}">
+  <ul class="tpl-jobs__list" role="list" aria-busy="true" aria-live="polite">
+    <li class="tpl-job tpl-job--skeleton" aria-hidden="true"><div class="tpl-stack" style="--stack-gap: var(--space-3)"><span class="tpl-skeleton"></span><span class="tpl-skeleton"></span></div></li>
+    <li class="tpl-job tpl-job--skeleton" aria-hidden="true"><div class="tpl-stack" style="--stack-gap: var(--space-3)"><span class="tpl-skeleton"></span><span class="tpl-skeleton"></span></div></li>
+    <li class="tpl-job tpl-job--skeleton" aria-hidden="true"><div class="tpl-stack" style="--stack-gap: var(--space-3)"><span class="tpl-skeleton"></span><span class="tpl-skeleton"></span></div></li>
+  </ul>
+  <div class="tpl-notice tpl-notice--info" data-tpl-jobs-empty hidden>
+    <svg class="tpl-icon" data-tpl-icon="briefcase"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">No open roles right now</p>
+      <p>We hire throughout the year. Tell us about yourself and we will reach out when a role opens.</p>
+      <a class="tpl-arrow-link" href="{{base|}}contact.html">Contact our team<svg class="tpl-icon" data-tpl-icon="arrow-right"></svg></a>
+    </div>
+  </div>
+  <div class="tpl-notice tpl-notice--danger" data-tpl-jobs-error hidden>
+    <svg class="tpl-icon" data-tpl-icon="alert-triangle"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">We could not load open roles</p>
+      <p>Every opening is also listed on our careers site.</p>
+      <a class="tpl-arrow-link" href="https://example.com/careers/" target="_blank" rel="noopener">Open roles on the careers site<svg class="tpl-icon" data-tpl-icon="external-link"></svg></a>
+    </div>
+  </div>
+</div>

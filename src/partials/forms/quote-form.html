@@ -1,0 +1,76 @@
+<form class="tpl-form" action="#" method="post" data-tpl-form data-tpl-demo aria-label="Request a quote">
+  <div class="tpl-notice tpl-notice--danger" data-tpl-error-summary tabindex="-1" hidden>
+    <svg class="tpl-icon" data-tpl-icon="alert-triangle"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">Check the highlighted fields</p>
+      <ul data-tpl-error-list></ul>
+    </div>
+  </div>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-name">Name</label>
+      <input class="tpl-input" id="{{p|q}}-name" name="name" autocomplete="name" required>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-company">Company <span class="tpl-field__opt">(optional)</span></label>
+      <input class="tpl-input" id="{{p|q}}-company" name="company" autocomplete="organization">
+    </div>
+  </div>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-email">Email</label>
+      <input class="tpl-input" id="{{p|q}}-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-phone">Phone</label>
+      <input class="tpl-input" id="{{p|q}}-phone" name="phone" type="tel" autocomplete="tel" pattern="[\d\s\(\)\+\.\-]{10,}" required>
+    </div>
+  </div>
+  <fieldset class="tpl-fieldset" data-tpl-required data-tpl-error="Choose at least one service">
+    <legend class="tpl-fieldset__legend">Services needed</legend>
+    <div class="tpl-choices tpl-choices--2">
+      <label class="tpl-choice"><input type="checkbox" id="{{p|q}}-svc-1" name="services" value="Service one">Service one</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|q}}-svc-2" name="services" value="Service two">Service two</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|q}}-svc-3" name="services" value="Service three">Service three</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|q}}-svc-4" name="services" value="Service four">Service four</label>
+      <label class="tpl-choice"><input type="checkbox" id="{{p|q}}-svc-5" name="services" value="Service five">Service five</label>
+    </div>
+  </fieldset>
+  <div class="tpl-form__row tpl-form__row--2">
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-location">Project location</label>
+      <p class="tpl-field__hint" id="{{p|q}}-location-hint">City and state, or the nearest cross streets</p>
+      <input class="tpl-input" id="{{p|q}}-location" name="location" aria-describedby="{{p|q}}-location-hint" required>
+    </div>
+    <div class="tpl-field">
+      <label class="tpl-field__label" for="{{p|q}}-timeline">Timeline</label>
+      <p class="tpl-field__hint" id="{{p|q}}-timeline-hint">When the work needs to start</p>
+      <div class="tpl-select-wrap">
+        <select class="tpl-select" id="{{p|q}}-timeline" name="timeline" aria-describedby="{{p|q}}-timeline-hint" required>
+          <option value="">Choose a timeline</option>
+          <option>As soon as possible</option>
+          <option>Within 3 months</option>
+          <option>3 to 6 months</option>
+          <option>Planning ahead</option>
+        </select>
+        <svg class="tpl-icon" data-tpl-icon="chevron-down"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="tpl-field">
+    <label class="tpl-field__label" for="{{p|q}}-details">Project details</label>
+    <p class="tpl-field__hint" id="{{p|q}}-details-hint">Scope, size, site conditions and anything else we should know</p>
+    <textarea class="tpl-textarea" id="{{p|q}}-details" name="details" aria-describedby="{{p|q}}-details-hint" minlength="20" required></textarea>
+  </div>
+  <div class="tpl-form__foot">
+    <button class="tpl-btn tpl-btn--primary tpl-btn--lg" type="submit"><svg class="tpl-icon tpl-icon--spin" data-tpl-icon="loader-2"></svg>Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-right"></svg></button>
+    <p class="tpl-small tpl-muted tpl-prose">Prefer to talk? Call <a href="tel:+15550100100">(555) 010-0100</a>.</p>
+  </div>
+</form>
+<div class="tpl-notice tpl-notice--success" data-tpl-success tabindex="-1" hidden>
+  <svg class="tpl-icon" data-tpl-icon="circle-check"></svg>
+  <div class="tpl-notice__body">
+    <p class="tpl-notice__title">Thanks, your request is in</p>
+    <p>We will review the details and follow up. For urgent work, call (555) 010-0100.</p>
+  </div>
+</div>

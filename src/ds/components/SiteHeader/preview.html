@@ -1,0 +1,24 @@
+<!-- @dsCard group="Navigation" height=160 width=1280 subtitle="Bar or island (Kinetic); one line at 1024px+, drawer or veil below" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SiteHeader</title>
+<style>
+  .pv-body { min-height: 96px; padding: var(--space-6) 0; }
+</style>
+</head>
+<body>
+<div class="pv">
+<div data-for-theme="cinematic engineered editorial">
+<!-- @include header.html active="services" base="#" -->
+<main id="main" tabindex="-1" class="pv-body"><div class="tpl-container tpl-muted tpl-small">Page content scrolls under the sticky header; below 1024px the nav collapses into the drawer.</div></main>
+</div>
+<div data-for-theme="kinetic" hidden>
+<!-- @include header.html active="services" base="#" header-class=" tpl-header--island" drawer-class=" tpl-drawer--veil" drawer-id="tpl-drawer-island" offset="40" -->
+<main id="main-island" tabindex="-1" class="tpl-under-island" style="min-height: 150px"><div class="tpl-container tpl-muted tpl-small">The island floats over the page; below 1024px the burger opens the full-screen veil.</div></main>
+</div>
+</div>
+<!-- @include ds/theme-follow.html -->
+</body>
+</html>

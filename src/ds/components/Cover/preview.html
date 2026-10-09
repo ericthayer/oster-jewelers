@@ -1,0 +1,48 @@
+<!-- @dsCard height=320 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Client Name</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--surface); color: var(--text); font-family: var(--font-sans); overflow: hidden; }
+  .cover { position: relative; width: 960px; height: 320px; overflow: hidden; }
+  .band { position: absolute; top: 0; left: 0; width: 960px; height: 120px; }
+  .band svg { display: block; width: 960px; height: 120px; }
+  .brand { fill: var(--brand-accent); }
+  .deep { fill: var(--surface-inverse); }
+  .highlight { fill: var(--highlight); }
+  .cut { fill: var(--surface); }
+  .words { position: absolute; left: var(--space-6); right: var(--space-6); bottom: var(--space-6); }
+  .name { margin: 0; font-size: 64px; line-height: 0.95; font-weight: var(--display-weight); letter-spacing: -0.02em; text-transform: none; color: var(--text); }
+  .tag { margin: var(--space-2) 0 0 2px; font-size: 14px; line-height: 20px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="band" aria-hidden="true">
+    <svg viewBox="0 0 960 120" width="960" height="120">
+      <!--
+        blocks       brand-accent 336x104 (notched, the primary) + brand-accent 184x96 bleeding off the right edge; surface-inverse 208x128 bleeding off the top; highlight 72x72 (the highlight, small) - about 27% of 960x320
+        arrangement  top band, because the name is too wide for the 440px zone at 64px; blocks sit on the band's base line with space-4 gutters
+        pattern      notch cuts: surface-colored cuts, space-2 wide, bridge the accent slab and the inverse block like broken strokes
+        scales       sides in space-2 multiples; gutters space-4; cuts space-2; notch 16 (--notch rounded to space-4); corners radius-none
+      -->
+      <polygon class="brand" points="24,16 344,16 360,32 360,120 24,120"/>
+      <rect class="cut" x="120" y="16" width="8" height="56"/>
+      <rect class="cut" x="232" y="64" width="8" height="56"/>
+      <rect class="deep" x="376" y="-8" width="208" height="128"/>
+      <rect class="cut" x="376" y="56" width="104" height="8"/>
+      <rect class="highlight" x="600" y="48" width="72" height="72"/>
+      <rect class="brand" x="792" y="-8" width="184" height="104"/>
+      <rect class="cut" x="872" y="-8" width="8" height="48"/>
+    </svg>
+  </div>
+  <div class="words">
+    <p class="name">Client<br>Name</p>
+    <p class="tag">The client&rsquo;s tagline. Four concepts on one brand core.</p>
+  </div>
+</div>
+</body>
+</html>

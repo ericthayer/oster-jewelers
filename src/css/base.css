@@ -1,0 +1,199 @@
+/* Base: reset, fluid type scale, layout primitives.
+   Flat selectors, no @layer and no nesting so the file pastes into Oxygen's
+   global stylesheet unchanged. Every value comes from a token. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background-color: var(--body-bg, var(--surface));
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.625;
+  font-weight: 400;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img,
+svg,
+video,
+picture {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+  margin: 0;
+}
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+button {
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+[hidden] {
+  display: none !important;
+}
+
+/* Any element can carry data-theme; nested themes repaint their own box. */
+[data-theme] {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+/* Page veil and grain: fixed layers behind everything, only where a concept
+   turns them on (Kinetic's glow and film grain). content: none by default. */
+body::before {
+  content: var(--page-veil, none);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--page-veil-bg, none);
+}
+body::after {
+  content: var(--page-grain, none);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Fluid type: 375px to 1280px viewports, landing on the tokens.json desktop sizes. */
+:root {
+  --fs-display-xl: clamp(2.75rem, 1.611rem + 4.862vw, 5.5rem);
+  --fs-display-lg: clamp(2.25rem, 1.525rem + 3.094vw, 4rem);
+  --fs-heading-xl: clamp(1.875rem, 1.513rem + 1.547vw, 2.75rem);
+  --fs-heading-lg: clamp(1.5rem, 1.293rem + 0.884vw, 2rem);
+  --fs-heading-md: clamp(1.25rem, 1.146rem + 0.442vw, 1.5rem);
+  --fs-heading-sm: 1.1875rem;
+  --fs-body-lg: clamp(1.0625rem, 1.011rem + 0.221vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-label: 0.875rem;
+  --fs-label-sm: 0.75rem;
+  --fs-figure: clamp(2.25rem, 1.939rem + 1.326vw, 3rem);
+  --page-gutter: var(--gutter-mobile);
+  --header-h: var(--header-height-mobile);
+}
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: var(--space-6);
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: var(--gutter);
+    --header-h: var(--header-height);
+  }
+}
+
+/* Layout primitives */
+.tpl-container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+.tpl-container--text {
+  max-width: calc(var(--container-text) + 2 * var(--page-gutter));
+}
+.tpl-section {
+  padding-block: var(--section-space);
+}
+.tpl-section--tight {
+  padding-block: calc(var(--section-space) * 0.6);
+}
+.tpl-section--sunken {
+  background-color: var(--surface-sunken);
+}
+.tpl-section--raised {
+  background-color: var(--surface-raised);
+}
+.tpl-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-4));
+}
+.tpl-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-4));
+}
+.tpl-measure {
+  max-width: 62ch;
+}
+.tpl-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.tpl-tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,34 @@
+<!-- @dsCard group="Sections" height=600 width=1280 subtitle="The detail sheet a bento tile morphs into; shown open, static" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ServiceSheet</title>
+<style>
+  .pv { padding: var(--space-8); }
+  .pv .tpl-sheet__panel { position: relative; max-height: none; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-sheet__panel tpl-shell">
+    <button class="tpl-sheet__close" type="button"><svg class="tpl-icon" data-tpl-icon="x"></svg><span class="tpl-visually-hidden">Close</span></button>
+    <div class="tpl-sheet__media"><img src="{{asset:Photography/photo-detail.svg}}" alt="Client photo placeholder: detail"></div>
+    <div class="tpl-sheet__body">
+      <span class="tpl-sheet__index">01 / 05</span>
+      <h2 class="tpl-h2">Service one</h2>
+      <p class="tpl-lead tpl-muted">One plain line on what service one does, for whom, and the outcome it delivers.</p>
+      <ul class="tpl-checks" role="list">
+        <li><svg class="tpl-icon" data-tpl-icon="check"></svg>What the service includes, in the client's words</li>
+        <li><svg class="tpl-icon" data-tpl-icon="check"></svg>Who does the work and with what</li>
+        <li><svg class="tpl-icon" data-tpl-icon="check"></svg>Typical projects and settings</li>
+      </ul>
+      <div class="tpl-hero__actions">
+        <a class="tpl-btn tpl-btn--primary tpl-btn--orb" href="#quote">Request a quote<svg class="tpl-icon tpl-icon--trail" data-tpl-icon="arrow-up-right"></svg></a>
+        <a class="tpl-arrow-link" href="#service-one">Our services<svg class="tpl-icon" data-tpl-icon="arrow-right"></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

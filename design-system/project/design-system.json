@@ -1,0 +1,113 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-08T00:00:00Z"
+  },
+  "title": "Client",
+  "namespace": "SiteDS",
+  "prefix": "tpl",
+  "libraries": [
+    {
+      "name": "gsap",
+      "version": "3.15.0",
+      "global": "gsap",
+      "file": "components/lib/gsap.min.js"
+    },
+    {
+      "name": "ScrollTrigger",
+      "version": "3.15.0",
+      "global": "ScrollTrigger",
+      "file": "components/lib/ScrollTrigger.min.js"
+    }
+  ],
+  "sections": {},
+  "groups": [
+    "Logos",
+    "Photography"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "logo.svg",
+        "logo-reversed.svg"
+      ],
+      "files": {
+        "logo.svg": {
+          "name": "logo.svg",
+          "size": 591,
+          "type": "image/svg+xml"
+        },
+        "logo-reversed.svg": {
+          "name": "logo-reversed.svg",
+          "size": 591,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Photography": {
+      "name": "Photography",
+      "tile": "m",
+      "order": [
+        "photo-wide.svg",
+        "photo-hero.svg",
+        "photo-people.svg",
+        "photo-detail.svg",
+        "photo-craft.svg",
+        "photo-site.svg"
+      ],
+      "files": {
+        "photo-wide.svg": {
+          "name": "photo-wide.svg",
+          "size": 1341,
+          "type": "image/svg+xml"
+        },
+        "photo-hero.svg": {
+          "name": "photo-hero.svg",
+          "size": 1350,
+          "type": "image/svg+xml"
+        },
+        "photo-people.svg": {
+          "name": "photo-people.svg",
+          "size": 1336,
+          "type": "image/svg+xml"
+        },
+        "photo-detail.svg": {
+          "name": "photo-detail.svg",
+          "size": 1345,
+          "type": "image/svg+xml"
+        },
+        "photo-craft.svg": {
+          "name": "photo-craft.svg",
+          "size": 1335,
+          "type": "image/svg+xml"
+        },
+        "photo-site.svg": {
+          "name": "photo-site.svg",
+          "size": 1346,
+          "type": "image/svg+xml"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-10-08T00:00:00Z",
+    "via": "Claude Code",
+    "note": "De-branded presentation template: tpl- prefix, archetype concepts, placeholder assets."
+  },
+  "ctaIntents": {
+    "quote": "Request a quote",
+    "call": "Call (555) 010-0100",
+    "careers": "View open roles",
+    "partner": "Start an inquiry"
+  }
+}

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Concepts" height=1040 width=1280 subtitle="Dark glass and light in motion; the motion-led backup" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kinetic board</title>
+<!-- @include brandkit/board-styles.html -->
+</head>
+<body>
+<div class="pv">
+<!-- @include brandkit/board-kinetic.html -->
+</div>
+<!-- @include brandkit/fit.html -->
+<script type="module">
+  import * as THREE from '{{vendor:three}}';
+  if (window.SiteDS) window.SiteDS.scene.mountAll(THREE);
+</script>
+</body>
+</html>

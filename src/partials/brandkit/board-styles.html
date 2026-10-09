@@ -1,0 +1,77 @@
+<style>
+  /* Brand-kit boards: presentation layout only (not part of the site bundle).
+     3 x 3 panels on a charcoal canvas, each board painted by its own data-theme. */
+  .bk-board { padding: 28px; background: var(--neutral-1000); color: var(--neutral-50); }
+  .bk-board__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; margin-bottom: 20px; }
+  .bk-board__kicker { font: 600 11px/1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--neutral-400); }
+  .bk-board__name { margin-top: 8px; font: 800 32px/1 var(--font-sans); letter-spacing: -0.02em; color: var(--neutral-50); }
+  .bk-board__summary { max-width: 52ch; font-size: 14px; line-height: 1.55; color: var(--neutral-300); }
+  .bk-board__dials { font: 600 12px/1.4 var(--font-sans); color: var(--neutral-400); font-variant-numeric: tabular-nums; }
+  .bk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 900px) { .bk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .bk-grid { grid-template-columns: 1fr; } }
+  .bk-panel { position: relative; display: flex; flex-direction: column; min-width: 0; aspect-ratio: 4 / 3; padding: 22px 22px 44px; overflow: hidden; background: var(--surface); color: var(--text); border-radius: var(--radius-card); }
+  .bk-panel--raised { background: var(--surface-raised); }
+  .bk-panel--sunken { background: var(--surface-sunken); }
+  .bk-panel--bleed { padding: 0; }
+  .bk-panel.tpl-on-accent { background: var(--surface-accent); color: var(--on-accent); }
+  .bk-label { position: absolute; left: 22px; bottom: 16px; z-index: 2; font: 600 10px/1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .bk-panel--bleed .bk-label { left: 0; bottom: 0; padding: 10px 14px; background: var(--surface); }
+  .bk-center { display: grid; place-items: center; flex: 1; }
+  .bk-logo { width: 72%; max-width: 320px; height: auto; }
+  .bk-note { margin-top: auto; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+  .bk-note strong { color: var(--text); }
+
+  /* Digital application: a real header + hero at 1280px, zoomed to fit. */
+  .bk-screen { width: 1280px; height: 800px; overflow: hidden; background: var(--surface); pointer-events: none; }
+  .bk-screen .tpl-hero--cinematic { min-height: 728px; }
+  .bk-screen .tpl-hero--split, .bk-screen .tpl-hero--editorial { padding-top: 48px; }
+
+  /* Essence */
+  .bk-essence { margin-top: auto; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.05; font-weight: var(--display-weight); letter-spacing: var(--display-tracking); text-transform: var(--display-transform); text-wrap: balance; }
+
+  /* Color */
+  .bk-swatches { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; flex: 1; }
+  .bk-swatch { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 8px 10px; font: 600 11px/1.3 var(--font-sans); font-variant-numeric: tabular-nums; border-radius: var(--radius-card); border: 1px solid var(--border); }
+  .bk-swatch--big { grid-row: span 2; font-size: 12px; }
+  .bk-swatch span { opacity: 0.85; font-weight: 500; }
+
+  /* Type */
+  .bk-aa { font-size: 88px; line-height: 0.9; font-weight: var(--display-weight); letter-spacing: var(--display-tracking); }
+  .bk-type-lines { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+  .bk-type-lines .l1 { font-size: 20px; line-height: 1.1; font-weight: var(--display-weight); text-transform: var(--display-transform); letter-spacing: var(--display-tracking); }
+  .bk-type-lines .l2 { font-size: 14px; color: var(--text-muted); }
+  .bk-type-lines .l3 { font: var(--label-weight) 11px/1.2 var(--label-family); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--accent-text); }
+
+  /* Photo crops */
+  .bk-photo { position: absolute; inset: 0; overflow: hidden; }
+  .bk-photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--media-filter); }
+  .bk-photo--zoom img { transform: scale(var(--zoom, 2.6)); transform-origin: var(--origin, 50% 50%); }
+
+  /* Construction details */
+  .bk-stencil { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; align-items: center; }
+  .bk-stencil__crop { aspect-ratio: 1; background-repeat: no-repeat; background-size: 520%; border: 1px dashed var(--field-border); border-radius: var(--radius-card); }
+  .bk-notch { aspect-ratio: 1; background: var(--accent); clip-path: polygon(0 0, calc(100% - 28%) 0, 100% 28%, 100% 100%, 0 100%); }
+  .bk-shapes { display: flex; align-items: center; justify-content: center; gap: 12px; flex: 1; }
+  .bk-shapes span { display: block; background: var(--accent); }
+  .bk-shapes .pill { width: 38%; height: 44px; border-radius: var(--radius-pill); }
+  .bk-shapes .card { width: 28%; aspect-ratio: 4 / 5; border-radius: var(--radius-lg); background: var(--surface-sunken); border: 1px solid var(--border-strong); }
+  .bk-shapes .field { width: 22%; height: 44px; border-radius: var(--radius-md); background: var(--surface-raised); border: 1px solid var(--field-border); }
+
+  /* Kinetic construction: the shell and its core, plus a pill */
+  .bk-bezel { display: flex; align-items: center; justify-content: center; gap: 14px; flex: 1; }
+  .bk-bezel__shell { width: 62%; aspect-ratio: 16 / 10; padding: 8px; background: var(--card-bg); border: var(--card-border); border-radius: var(--radius-2xl); box-shadow: var(--card-shadow); }
+  .bk-bezel__core { display: flex; align-items: flex-end; height: 100%; padding: 14px; background: var(--shell-core); border-radius: var(--radius-xl); box-shadow: var(--shell-highlight); }
+  .bk-bezel__core span { width: 40%; height: 6px; background: var(--accent); border-radius: var(--radius-pill); }
+  .bk-bezel__pill { width: 22%; height: 44px; background: var(--accent); border-radius: var(--radius-pill); }
+  .bk-screen .tpl-header--island { position: absolute; }
+  .bk-screen .tpl-hero--scene { min-height: 800px; }
+  .bk-panel--veil { background: var(--surface); background-image: var(--page-veil-bg); }
+
+  /* System detail */
+  .bk-detail { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .bk-detail .tpl-btn { --btn-height: 40px; --btn-pad: 16px; }
+  .bk-detail .tpl-input { min-height: 40px; padding-block: 8px; }
+  .bk-icons { display: flex; gap: 12px; color: var(--accent-text); }
+  .bk-icons .tpl-icon { width: 24px; height: 24px; }
+</style>

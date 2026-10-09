@@ -1,0 +1,34 @@
+<!-- @dsCard group="Brand" height=330 subtitle="Placeholder lockups until the client supplies vector files" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo</title>
+<style>
+  .pv { display: grid; gap: var(--space-4); padding: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .pv__plate { display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-8); margin: 0; padding: var(--space-10); border: 1px solid var(--border); }
+  .pv__plate--light { background: var(--neutral-0); }
+  .pv__plate--dark { background: var(--neutral-950); }
+  .pv__plate img { width: 100%; max-width: 280px; height: auto; }
+  .pv__clear { outline: 1px dashed var(--brand-accent); outline-offset: 30px; }
+  .pv__plate figcaption { font-size: var(--fs-body-sm); line-height: 1.55; }
+  .pv__plate--light figcaption { color: var(--neutral-600); }
+  .pv__plate--dark figcaption { color: var(--neutral-400); }
+  .pv__plate strong { color: inherit; font-weight: 700; }
+  .pv__plate--light strong { color: var(--ink); }
+  .pv__plate--dark strong { color: var(--neutral-50); }
+</style>
+</head>
+<body>
+<div class="pv">
+  <figure class="pv__plate pv__plate--light">
+    <img class="pv__clear" src="{{asset:Logos/logo.svg}}" alt="Client logo placeholder, full color" width="1400" height="605">
+    <figcaption><strong>Full color</strong> on light grounds. Keep clear space equal to the mark's width on every side (dashed line); never below 44px tall on screen.</figcaption>
+  </figure>
+  <figure class="pv__plate pv__plate--dark">
+    <img src="{{asset:Logos/logo-reversed.svg}}" alt="Client logo placeholder, reversed" width="1400" height="605">
+    <figcaption><strong>Reversed, provisional</strong> for dark grounds and photography. Needs client approval and vector files.</figcaption>
+  </figure>
+</div>
+</body>
+</html>

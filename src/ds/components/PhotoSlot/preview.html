@@ -1,0 +1,19 @@
+<!-- @dsCard group="Sections" height=330 subtitle="Framed photo with the concept's grade, and the slot that stands in for a shot still needed" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PhotoSlot</title>
+<style>
+  .pv { display: grid; gap: var(--space-4); padding: var(--space-6); grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+  .pv figure { margin: 0; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <figure><div class="tpl-media"><img src="{{asset:Photography/photo-detail.svg}}" alt="Client photo placeholder: detail"></div><figcaption class="tpl-caption">Service one in progress.</figcaption></figure>
+  <figure><div class="tpl-media tpl-media--portrait" style="--ratio: 4 / 3; --focus: 60% 45%"><img src="{{asset:Photography/photo-site.svg}}" alt="Client photo placeholder: on site"></div><figcaption class="tpl-caption">Materials staged on site.</figcaption></figure>
+  <div class="tpl-slot"><svg class="tpl-icon" data-tpl-icon="camera"></svg><p class="tpl-slot__label">Photo needed</p><p class="tpl-slot__brief">Service three in action, people in frame, 3:2 landscape</p></div>
+</div>
+</body>
+</html>

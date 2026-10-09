@@ -1,0 +1,12 @@
+<script>
+  /* Brand boards: zoom each 1280px screen to its panel width. */
+  (function () {
+    document.querySelectorAll('[data-bk-fit]').forEach(function (panel) {
+      var screen = panel.querySelector('.bk-screen');
+      if (!screen) return;
+      var fit = function () { screen.style.zoom = String(panel.clientWidth / 1280); };
+      fit();
+      if ('ResizeObserver' in window) new ResizeObserver(fit).observe(panel);
+    });
+  })();
+</script>

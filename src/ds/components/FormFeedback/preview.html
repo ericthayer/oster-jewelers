@@ -1,0 +1,32 @@
+<!-- @dsCard group="Forms" height=300 subtitle="Error summary on submit, success panel after; both take focus" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FormFeedback</title>
+<style>
+  .pv { display: grid; gap: var(--space-4); padding: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <div class="tpl-notice tpl-notice--danger" tabindex="-1">
+    <svg class="tpl-icon" data-tpl-icon="alert-triangle"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">Check the highlighted fields</p>
+      <ul>
+        <li><a href="#f-email">Enter an email address like name@company.com</a></li>
+        <li><a href="#f-services">Choose at least one service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tpl-notice tpl-notice--success" tabindex="-1">
+    <svg class="tpl-icon" data-tpl-icon="circle-check"></svg>
+    <div class="tpl-notice__body">
+      <p class="tpl-notice__title">Thanks, your request is in</p>
+      <p>We will review the details and follow up. For urgent work, call (555) 010-0100.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

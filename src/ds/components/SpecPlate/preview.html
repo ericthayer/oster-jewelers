@@ -1,0 +1,25 @@
+<!-- @dsCard group="Sections" height=300 subtitle="A title block of facts; pending cells show what the client still owes" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SpecPlate</title>
+<style>
+  .pv { display: grid; gap: var(--space-6); padding: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
+</style>
+</head>
+<body>
+<div class="pv">
+  <dl class="tpl-plate">
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Service lines</dt><dd class="tpl-plate__value">5</dd></div>
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Part of</dt><dd class="tpl-plate__value">Parent company</dd></div>
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Offices</dt><dd class="tpl-plate__value">City, ST<br>City, ST</dd></div>
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Call</dt><dd class="tpl-plate__value"><a href="tel:+15550100100">(555) 010-0100</a></dd></div>
+  </dl>
+  <dl class="tpl-plate" style="--plate-cols: 1">
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Founded</dt><dd class="tpl-plate__value"><span class="tpl-pending">Client to provide</span></dd></div>
+    <div class="tpl-plate__cell"><dt class="tpl-plate__label">Teams in the field</dt><dd class="tpl-plate__value"><span class="tpl-pending">Client to provide</span></dd></div>
+  </dl>
+</div>
+</body>
+</html>
